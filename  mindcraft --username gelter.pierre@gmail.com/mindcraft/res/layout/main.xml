@@ -1,12 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="@string/hello"
-    />
-</LinearLayout>
+    <RelativeLayout android:id="@+id/mainLayout" 
+       				android:layout_width="fill_parent"
+    				android:layout_height="fill_parent"
+    				xmlns:android="http://schemas.android.com/apk/res/android"
+    				android:background="@drawable/background">
+          <ImageView android:layout_width="wrap_content"
+        	     	 android:id="@+id/logoView" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/logo"
+        	     	 android:layout_marginTop="10dip" 
+        	     	 android:layout_centerHorizontal="true">
+          </ImageView>
+        <ImageButton android:layout_width="wrap_content" 
+        			 android:layout_height="wrap_content" 
+        			 android:src="@drawable/newgame" 
+        			 android:id="@+id/newGameButton"
+        			 android:layout_centerHorizontal="true"
+        			 android:layout_below="@id/logoView"
+        			 android:layout_marginTop="20dip"
+        			 android:background="@android:color/transparent">
+        </ImageButton>
+        <ImageButton android:layout_width="wrap_content" 
+        			 android:layout_height="wrap_content" 
+        			 android:src="@drawable/loadgame" 
+        			 android:id="@+id/loadGameButton" 
+        			 android:layout_centerHorizontal="true"
+        			 android:layout_below="@id/newGameButton"
+        			 android:layout_marginTop="20dip"
+        			 android:background="@android:color/transparent">
+        </ImageButton>
+        <ImageButton android:layout_width="wrap_content" 
+        			 android:layout_height="wrap_content"
+        			 android:src="@drawable/highscores" 
+        			 android:id="@+id/highScoresButton" 
+        			 android:layout_centerHorizontal="true"
+        			 android:layout_below="@id/loadGameButton"
+        			 android:layout_marginTop="20dip"
+        			 android:background="@android:color/transparent">
+        </ImageButton>
+        <ImageButton android:layout_width="wrap_content"
+        			 android:layout_height="wrap_content" 
+        			 android:src="@drawable/options" 
+        			 android:id="@+id/optionsButton" 
+        			 android:layout_centerHorizontal="true"
+        			 android:layout_below="@id/highScoresButton"
+        			 android:layout_marginTop="20dip"
+        			 android:background="@android:color/transparent">
+        </ImageButton>
+        <ImageButton android:layout_width="wrap_content" 
+        			 android:layout_height="wrap_content" 
+        			 android:src="@drawable/about" 
+        			 android:id="@+id/aboutButton" 
+        			 android:layout_centerHorizontal="true"
+        			 android:layout_below="@id/optionsButton"
+        			 android:layout_marginTop="20dip"
+        			 android:background="@android:color/transparent">
+        </ImageButton>      
+    </RelativeLayout>
+
+
