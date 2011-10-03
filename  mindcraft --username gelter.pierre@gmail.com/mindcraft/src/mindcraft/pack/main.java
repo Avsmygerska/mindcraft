@@ -18,7 +18,14 @@ public class main extends Activity {
 	//NewGame buttons
 	private ImageButton singlePButton;
 	private ImageButton multiPButton;
+	private ImageButton P1EasyButton;
+	private ImageButton P2EasyButton;
+	private ImageButton P1MediumButton;
+	private ImageButton P2MediumButton;
+	private ImageButton P1HardButton;
+	private ImageButton P2HardButton;
 	private ImageButton startNewGameButton;
+	
 	
 	//LoadGame buttons
 	private ImageButton resumeGameButton;
