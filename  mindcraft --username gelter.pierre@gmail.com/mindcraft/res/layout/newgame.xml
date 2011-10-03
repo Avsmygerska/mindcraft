@@ -4,11 +4,106 @@
   				android:layout_height="fill_parent"
   				android:background="@drawable/background"
   				android:id="@+id/newGameLayout">
+  		  <ImageView android:layout_width="wrap_content"
+        	     	 android:id="@+id/newGameView" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/newgame"
+        	     	 android:layout_marginTop="10dip" 
+        	     	 android:layout_centerHorizontal="true">
+          </ImageView>
+          <ImageView android:layout_width="wrap_content"
+        	     	 android:id="@+id/anchor" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/anchor"
+        	     	 android:layout_below="@id/newGameView"
+        	     	 android:layout_marginTop="10dip" 
+        	     	 android:layout_centerHorizontal="true">
+          </ImageView>
   		  <ImageButton android:layout_width="wrap_content"
-        	     	 android:id="@+id/startView" 
+        	     	 android:id="@+id/singlePButton" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/single"
+        	     	 android:layout_below="@id/newGameView"
+        	     	 android:layout_toLeftOf="@id/anchor"
+        	     	 android:layout_marginRight="20dip"
+        	     	 android:layout_marginTop="10dip" 
+        	     	 android:background="@android:color/transparent">
+          </ImageButton>
+  		  <ImageButton android:layout_width="wrap_content"
+        	     	 android:id="@+id/multiPButton" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/multi"
+        	     	 android:layout_below="@id/newGameView" 
+        	     	 android:layout_toRightOf="@id/anchor"
+        	     	 android:layout_marginLeft="20dip"
+        	     	 android:layout_marginTop="10dip"
+        	     	 android:background="@android:color/transparent">
+          </ImageButton>
+   		  <ImageButton android:layout_width="wrap_content"
+        	     	 android:id="@+id/P1EasyButton" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/easy"
+        	     	 android:layout_below="@id/multiPButton" 
+        	     	android:layout_toLeftOf="@id/anchor"
+        	     	 android:layout_marginRight="20dip"
+        	     	 android:layout_marginTop="10dip"
+        	     	 android:background="@android:color/transparent">
+          </ImageButton>
+   		  <ImageButton android:layout_width="wrap_content"
+        	     	 android:id="@+id/P2EasyButton" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/easy"
+        	     	 android:layout_below="@id/multiPButton" 
+        	     	 android:layout_toRightOf="@id/anchor"
+        	     	 android:layout_marginLeft="20dip"
+        	     	 android:layout_marginTop="10dip"
+        	     	 android:background="@android:color/transparent">
+          </ImageButton>
+  		  <ImageButton android:layout_width="wrap_content"
+        	     	 android:id="@+id/P1MediumButton" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/medium"
+        	     	 android:layout_below="@id/P1EasyButton" 
+        	     	 android:layout_toLeftOf="@id/anchor"
+        	     	 android:layout_marginRight="20dip"
+        	     	 android:layout_marginTop="10dip"
+        	     	 android:background="@android:color/transparent">
+          </ImageButton>
+          <ImageButton android:layout_width="wrap_content"
+        	     	 android:id="@+id/P2MediumButton" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/medium"
+        	     	 android:layout_below="@id/P1EasyButton" 
+        	     	 android:layout_toRightOf="@id/anchor"
+        	     	 android:layout_marginLeft="20dip"
+        	     	 android:layout_marginTop="10dip"
+        	     	 android:background="@android:color/transparent">
+          </ImageButton>
+          <ImageButton android:layout_width="wrap_content"
+        	     	 android:id="@+id/P1HardButton" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/hard"
+        	     	 android:layout_below="@id/P1MediumButton" 
+        	     	 android:layout_toLeftOf="@id/anchor"
+        	     	 android:layout_marginRight="20dip"
+        	     	 android:layout_marginTop="10dip"
+        	     	 android:background="@android:color/transparent">
+          </ImageButton>
+          <ImageButton android:layout_width="wrap_content"
+        	     	 android:id="@+id/P2HardButton" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/hard"
+        	     	 android:layout_below="@id/P1MediumButton" 
+        	     	 android:layout_toRightOf="@id/anchor"
+        	     	 android:layout_marginLeft="20dip"
+        	     	 android:layout_marginTop="10dip"
+        	     	 android:background="@android:color/transparent">
+          </ImageButton>
+  		  <ImageButton android:layout_width="wrap_content"
+        	     	 android:id="@+id/startButton" 
         	     	 android:layout_height="wrap_content" 
         	     	 android:src="@drawable/startselector"
-        	     	 android:layout_marginTop="10dip" 
+        	     	 android:layout_below="@id/P1HardButton"
         	     	 android:layout_centerHorizontal="true"
         	     	 android:background="@android:color/transparent">
           </ImageButton>

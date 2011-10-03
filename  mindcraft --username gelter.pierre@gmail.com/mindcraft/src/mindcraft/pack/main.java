@@ -8,11 +8,27 @@ import android.widget.ImageButton;
 
 public class main extends Activity {
     /** Called when the activity is first created. */
+	//MainMenu buttons.
 	private ImageButton newButton;
 	private ImageButton loadButton;
 	private ImageButton highscoreButton;
 	private ImageButton optionsButton;
 	private ImageButton aboutButton;
+	
+	//NewGame buttons
+	private ImageButton singlePButton;
+	private ImageButton multiPButton;
+	private ImageButton startNewGameButton;
+	
+	//LoadGame buttons
+	private ImageButton resumeGameButton;
+	
+	//Options buttons
+	
+	//Generic buttons
+	private ImageButton returnToMain;
+	
+	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,13 +60,13 @@ public class main extends Activity {
          this.optionsButton.setOnClickListener(new OnClickListener() {
              @Override
              public void onClick(View v) {
-              //main.this.setContentView(R.layout.scoreboard);
+              //main.this.setContentView(R.layout.options);
              }
            });
          this.aboutButton.setOnClickListener(new OnClickListener() {
              @Override
              public void onClick(View v) {
-              //main.this.setContentView(R.layout.scoreboard);
+              //main.this.setContentView(R.layout.about);
              }
            });
     }
