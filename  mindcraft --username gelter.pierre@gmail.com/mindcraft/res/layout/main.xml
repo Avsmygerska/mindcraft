@@ -13,7 +13,7 @@
           </ImageView>
         <ImageButton android:layout_width="wrap_content" 
         			 android:layout_height="wrap_content" 
-        			 android:src="@drawable/newgame" 
+        			 android:src="@drawable/newgameselector" 
         			 android:id="@+id/newGameButton"
         			 android:layout_centerHorizontal="true"
         			 android:layout_below="@id/logoView"
@@ -22,7 +22,7 @@
         </ImageButton>
         <ImageButton android:layout_width="wrap_content" 
         			 android:layout_height="wrap_content" 
-        			 android:src="@drawable/loadgame" 
+        			 android:src="@drawable/loadgameselector" 
         			 android:id="@+id/loadGameButton" 
         			 android:layout_centerHorizontal="true"
         			 android:layout_below="@id/newGameButton"
@@ -31,7 +31,7 @@
         </ImageButton>
         <ImageButton android:layout_width="wrap_content" 
         			 android:layout_height="wrap_content"
-        			 android:src="@drawable/highscores" 
+        			 android:src="@drawable/highscoresselector" 
         			 android:id="@+id/highScoresButton" 
         			 android:layout_centerHorizontal="true"
         			 android:layout_below="@id/loadGameButton"
@@ -40,7 +40,7 @@
         </ImageButton>
         <ImageButton android:layout_width="wrap_content"
         			 android:layout_height="wrap_content" 
-        			 android:src="@drawable/options" 
+        			 android:src="@drawable/optionsselector" 
         			 android:id="@+id/optionsButton" 
         			 android:layout_centerHorizontal="true"
         			 android:layout_below="@id/highScoresButton"
