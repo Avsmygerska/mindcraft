@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
 public class main extends Activity {
@@ -104,7 +105,8 @@ public class main extends Activity {
               //main.this.setContentView(R.layout.about);
              }
            });
-         /*this.singlePButton.setOnClickListener(new OnClickListener() {
+         
+         /*this.singlePButton.setOnClickListener(new OnClickListener() { FÅR INTE DESSA FUNKTIONER ATT FUNGERA!
              @Override
              public void onClick(View v) {
               //main.this.setContentView(R.layout.about);
