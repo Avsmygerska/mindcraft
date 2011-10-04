@@ -61,13 +61,13 @@ public class main extends Activity {
          this.highscoreButton.setOnClickListener(new OnClickListener() {
              @Override
              public void onClick(View v) {
-              //main.this.setContentView(R.layout.scoreboard);
+              main.this.setContentView(R.layout.scoreboard);
              }
            });
          this.optionsButton.setOnClickListener(new OnClickListener() {
              @Override
              public void onClick(View v) {
-              //main.this.setContentView(R.layout.options);
+              main.this.setContentView(R.layout.options);
              }
            });
          this.aboutButton.setOnClickListener(new OnClickListener() {
