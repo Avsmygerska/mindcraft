@@ -99,7 +99,7 @@
         	     	 android:layout_marginTop="10dip"
         	     	 android:background="@android:color/transparent">
           </ImageButton>
-          <Spinner android:layout_height="wrap_content" 
+         <!--  <Spinner android:layout_height="wrap_content" 
           		   android:id="@+id/P1CustomLevel"
           		   android:drawSelectorOnTop="true" 
           		   android:layout_below="@+id/P1HardButton" 
@@ -118,7 +118,7 @@
           		   android:layout_marginLeft="20dip"
           		   android:layout_marginTop="10dip"
           		   android:prompt="@string/custom_difficulty">
-          </Spinner>
+          </Spinner> -->
   		  <ImageButton android:layout_width="wrap_content"
         	     	 android:id="@+id/startNewGameButton" 
         	     	 android:layout_height="wrap_content" 
