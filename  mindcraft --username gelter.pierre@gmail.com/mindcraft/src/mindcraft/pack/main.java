@@ -5,10 +5,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 
 public class main extends Activity {
-    /** Called when the activity is first created. */
-	//MainMenu buttons.
+    /** Main creates the activity and controls all the
+     *  buttons in the layout menus. The buttons/modules
+     *  that doesn't take you between layouts is directed
+     *  to respective controllers. */
+	//
+	//MainMenu buttons
 	private ImageButton newButton;
 	private ImageButton loadButton;
 	private ImageButton highscoreButton;
@@ -25,6 +30,8 @@ public class main extends Activity {
 	private ImageButton P1HardButton;
 	private ImageButton P2HardButton;
 	private ImageButton startNewGameButton;
+	private Spinner P1CustomLevel;
+	private Spinner P2CustomLevel;
 	
 	
 	//LoadGame buttons
@@ -35,17 +42,22 @@ public class main extends Activity {
 	//Generic buttons
 	private ImageButton returnToMain;
 	
-	
+	//CREATION
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        
+        //Assigning modules
         this.newButton = (ImageButton)this.findViewById(R.id.newGameButton);
         this.loadButton = (ImageButton)this.findViewById(R.id.loadGameButton);
         this.highscoreButton = (ImageButton)this.findViewById(R.id.highScoresButton);
         this.optionsButton = (ImageButton)this.findViewById(R.id.optionsButton);
         this.aboutButton = (ImageButton)this.findViewById(R.id.aboutButton);
+        this.returnToMain = (ImageButton)this.findViewById(R.id.returnToMainButton);
         
+        //METHODS
+        //MainMenu methods
          this.newButton.setOnClickListener(new OnClickListener() {
           @Override
           public void onClick(View v) {
@@ -74,6 +86,14 @@ public class main extends Activity {
              @Override
              public void onClick(View v) {
               //main.this.setContentView(R.layout.about);
+             }
+           });
+         
+         //Generic methods
+         this.returnToMain.setOnClickListener(new OnClickListener() {
+             @Override
+             public void onClick(View v) {
+              main.this.setContentView(R.layout.main);
              }
            });
     }
