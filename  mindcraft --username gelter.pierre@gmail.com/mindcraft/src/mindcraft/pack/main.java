@@ -20,7 +20,7 @@ public class main extends Activity {
 	private ImageButton optionsButton;
 	private ImageButton aboutButton;
 	
-	//NewGame buttons
+	/*//NewGame buttons
 	private ImageButton singlePButton;
 	private ImageButton multiPButton;
 	private ImageButton P1EasyButton;
@@ -35,12 +35,12 @@ public class main extends Activity {
 	
 	
 	//LoadGame buttons
-	private ImageButton resumeGameButton;
+	private ImageButton resumeGameButton;*/
 	
 	//Options buttons
 	
 	//Generic buttons
-	private ImageButton returnToMain;
+	private ImageButton returnToMainButton;
 	
 	//CREATION
 	@Override
@@ -54,7 +54,7 @@ public class main extends Activity {
         this.highscoreButton = (ImageButton)this.findViewById(R.id.highScoresButton);
         this.optionsButton = (ImageButton)this.findViewById(R.id.optionsButton);
         this.aboutButton = (ImageButton)this.findViewById(R.id.aboutButton);
-        this.returnToMain = (ImageButton)this.findViewById(R.id.returnToMainButton);
+        this.returnToMainButton = (ImageButton)this.findViewById(R.id.returnToMainButton);
         
         //METHODS
         //MainMenu methods
@@ -90,7 +90,7 @@ public class main extends Activity {
            });
          
          //Generic methods
-         this.returnToMain.setOnClickListener(new OnClickListener() {
+         this.returnToMainButton.setOnClickListener(new OnClickListener() {
              @Override
              public void onClick(View v) {
               main.this.setContentView(R.layout.main);
