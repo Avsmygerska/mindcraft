@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  				xmlns:android="http://schemas.android.com/apk/res/android"
+  				android:layout_width="fill_parent"
+  				android:layout_height="fill_parent"
+  				android:background="@drawable/background"
+  				android:id="@+id/newGameLayout">
+   		  <ImageView android:layout_width="wrap_content"
+        	     	 android:id="@+id/ScoreboardView" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/scoreboard"
+        	     	 android:layout_marginTop="10dip" 
+        	     	 android:layout_centerHorizontal="true">
+          </ImageView>
+   		  <TextView android:text="TextView"
+   		  			android:layout_width="wrap_content" 
+   		  			android:layout_height="wrap_content" 
+   		  			android:id="@+id/firstName" 
+   		  			android:layout_below="@+id/ScoreboardView"
+   		  			android:layout_marginTop="10dip" 
+   		  			android:layout_alignLeft="@+id/ScoreboardView">
+   		  </TextView>
+   		  <TextView android:text="TextView" 
+   		  			android:layout_width="wrap_content" 
+   		  			android:layout_height="wrap_content" 
+   		  			android:id="@+id/firstScore" 
+   		  			android:layout_below="@+id/ScoreboardView"
+   		  			android:layout_marginTop="10dip" 
+   		  			android:layout_alignRight="@+id/ScoreboardView">
+   		  </TextView>
+   		  <TextView android:text="TextView" 
+   		  			android:layout_width="wrap_content" 
+   		  			android:layout_height="wrap_content" 
+   		  			android:id="@+id/secondName" 
+   		  			android:layout_below="@+id/firstName" 
+   		  			android:layout_alignLeft="@+id/ScoreboardView">
+   		  </TextView>
+   		  <TextView android:text="TextView" 
+   		  			android:layout_width="wrap_content" 
+   		  			android:layout_height="wrap_content" 
+   		  			android:id="@+id/secondScore" 
+   		  			android:layout_below="@+id/firstName" 
+   		  			android:layout_alignRight="@+id/ScoreboardView">
+   		  </TextView>
+   		  <TextView android:text="TextView" 
+   		  			android:layout_width="wrap_content" 
+   		  			android:layout_height="wrap_content" 
+   		  			android:id="@+id/thirdName" 
+   		  			android:layout_below="@+id/secondName" 
+   		  			android:layout_alignLeft="@+id/ScoreboardView">
+   		  </TextView>
+   		  <TextView android:text="TextView" 
+   		  			android:layout_width="wrap_content" 
+   		  			android:layout_height="wrap_content" 
+   		  			android:id="@+id/thirdScore" 
+   		  			android:layout_below="@+id/secondName" 
+   		  			android:layout_alignRight="@+id/ScoreboardView">
+   		  </TextView>
+   		  <TextView android:text="TextView" 
+   		  			android:layout_width="wrap_content" 
+   		  			android:layout_height="wrap_content" 
+   		  			android:id="@+id/fourthName" 
+   		  			android:layout_below="@+id/thirdName" 
+   		  			android:layout_alignLeft="@+id/ScoreboardView">
+   		  </TextView>
+   		  <TextView android:text="TextView" 
+   		  			android:layout_width="wrap_content" 
+   		  			android:layout_height="wrap_content" 
+   		  			android:id="@+id/fourthScore" 
+   		  			android:layout_below="@+id/thirdName" 
+   		  			android:layout_alignRight="@+id/ScoreboardView">
+   		  </TextView>
+   		  <TextView android:text="TextView" 
+   		  			android:layout_width="wrap_content" 
+   		  			android:layout_height="wrap_content" 
+   		  			android:id="@+id/fifthName" 
+   		  			android:layout_below="@+id/fourthName" 
+   		  			android:layout_alignLeft="@+id/ScoreboardView">
+   		  </TextView>
+   		  <TextView android:text="TextView" 
+   		  			android:layout_width="wrap_content" 
+   		  			android:layout_height="wrap_content" 
+   		  			android:id="@+id/fifthScore" 
+   		  			android:layout_below="@+id/fourthName" 
+   		  			android:layout_alignRight="@+id/ScoreboardView">
+   		  </TextView>
+   		  <ImageButton android:layout_width="wrap_content"
+        	     	 android:id="@+id/returnToMainButton" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/backselector"
+        	     	 android:layout_marginBottom="10dip"
+        	     	 android:layout_alignParentRight="true"
+        	     	 android:layout_alignParentBottom="true"
+        	     	 android:background="@android:color/transparent">
+          </ImageButton>
+</RelativeLayout>

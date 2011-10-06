@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="@drawable/background"
+  android:id="@+id/GameViewLayout">
+  <ImageButton 	 android:layout_width="wrap_content"
+        	     	 android:id="@+id/Button1" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/buttonselector"
+        	     	 android:layout_toLeftOf="@+id/Button2"
+        	     	 android:layout_alignTop="@+id/Button2"
+        	     	 android:layout_marginRight="10sp"
+        	     	 android:background="@android:color/transparent">
+          </ImageButton>
+          <ImageButton 	 android:layout_width="wrap_content"
+        	     	 android:id="@+id/Button2" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/buttonselector"
+        	     	 android:layout_above="@+id/Button5"
+        	     	 android:layout_centerHorizontal="true"
+        	     	 android:layout_marginBottom="10sp"
+        	     	 android:background="@android:color/transparent">
+          </ImageButton>
+          <ImageButton 	 android:layout_width="wrap_content"
+        	     	 android:id="@+id/Button3" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/buttonselector"
+        	     	 android:layout_toRightOf="@+id/Button2"
+        	     	 android:layout_alignTop="@+id/Button2"
+        	     	 android:layout_marginLeft="10sp"
+        	     	 android:background="@android:color/transparent">
+          </ImageButton>
+          <ImageButton 	 android:layout_width="wrap_content"
+        	     	 android:id="@+id/Button4" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/buttonselector"
+        	     	 android:layout_alignTop="@+id/Button5"
+        	     	 android:layout_toLeftOf="@+id/Button5"
+        	     	 android:layout_marginRight="10sp"
+        	     	 android:background="@android:color/transparent">
+          </ImageButton>
+    <ImageButton 	 android:layout_width="wrap_content"
+        	     	 android:id="@+id/Button5" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/buttonselector"
+        	     	 android:layout_centerInParent="true"
+        	     	 android:background="@android:color/transparent">
+          </ImageButton>
+          <ImageButton 	 android:layout_width="wrap_content"
+        	     	 android:id="@+id/Button6" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/buttonselector"
+        	     	 android:layout_alignTop="@+id/Button5"
+        	     	 android:layout_toRightOf="@+id/Button5"
+        	     	 android:layout_marginLeft="10sp"
+        	     	 android:background="@android:color/transparent">
+          </ImageButton>
+          <ImageButton 	 android:layout_width="wrap_content"
+        	     	 android:id="@+id/Button7" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/buttonselector"
+        	     	 android:layout_toLeftOf="@+id/Button8"
+        	     	 android:layout_alignTop="@+id/Button8"
+        	     	 android:layout_marginRight="10sp"
+        	     	 android:background="@android:color/transparent">
+          </ImageButton>
+          <ImageButton 	 android:layout_width="wrap_content"
+        	     	 android:id="@+id/Button8" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/buttonselector"
+        	     	 android:layout_below="@+id/Button5"
+        	     	 android:layout_centerHorizontal="true"
+        	     	 android:layout_marginTop="10sp"
+        	     	 android:background="@android:color/transparent">
+          </ImageButton>
+          <ImageButton 	 android:layout_width="wrap_content"
+        	     	 android:id="@+id/Button9" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/buttonselector"
+        	     	 android:layout_toRightOf="@+id/Button8"
+        	     	 android:layout_alignTop="@+id/Button8"
+        	     	 android:layout_marginLeft="10sp"
+        	     	 android:background="@android:color/transparent">
+          </ImageButton>
+</RelativeLayout>

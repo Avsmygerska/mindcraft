@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  				android:layout_width="fill_parent"
+  				android:layout_height="fill_parent"
+  				android:background="@drawable/background"
+  				android:id="@+id/newGameLayout">
+  		<ImageView 	android:layout_width="wrap_content"
+        	   	 	android:id="@+id/newGameView" 
+        	     	android:layout_height="wrap_content" 
+        	     	android:src="@drawable/newgame"
+        	     	android:layout_marginTop="10dip" 
+        	     	android:layout_centerHorizontal="true">
+        </ImageView>
+        <ImageView	android:layout_width="wrap_content"
+        	     	android:id="@+id/anchor" 
+        	     	android:layout_height="wrap_content" 
+        	     	android:src="@drawable/anchor"
+        	     	android:layout_below="@id/newGameView"
+        	     	android:layout_marginTop="10dip" 
+        	     	android:layout_centerHorizontal="true">
+          </ImageView>
+          
+          <CheckBox android:id="@+id/checkBoxSingleplayer" 
+          			android:layout_width="wrap_content" 
+          			android:layout_height="wrap_content" 
+          			android:text="Singleplayer" 
+          			android:layout_below="@+id/anchor" 
+          			android:layout_toLeftOf="@+id/anchor" 
+          			android:layout_marginRight="5dp">
+          </CheckBox>
+          <CheckBox android:id="@+id/checkBoxMultiplayer" 
+          			android:layout_width="wrap_content" 
+          			android:layout_height="wrap_content" 
+          			android:text="Multiplayer" 
+          			android:layout_alignBaseline="@+id/checkBoxSingleplayer" 
+          			android:layout_alignBottom="@+id/checkBoxSingleplayer" 
+          			android:layout_toRightOf="@+id/anchor" 
+          			android:layout_marginLeft="5dp">
+          </CheckBox>
+          
+          
+          
+<!--    		  <ImageButton android:layout_width="wrap_content"
+        	     	 android:id="@+id/singlePButton" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/single"
+        	     	 android:layout_below="@id/newGameView"
+        	     	 android:layout_toLeftOf="@id/anchor"
+        	     	 android:layout_marginRight="20dip"
+        	     	 android:layout_marginTop="10dip" 
+        	     	 android:background="@android:color/transparent">
+          </ImageButton>
+  		  <ImageButton android:layout_width="wrap_content"
+        	     	 android:id="@+id/multiPButton" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/multi"
+        	     	 android:layout_below="@id/newGameView" 
+        	     	 android:layout_toRightOf="@id/anchor"
+        	     	 android:layout_marginLeft="20dip"
+        	     	 android:layout_marginTop="10dip"
+        	     	 android:background="@android:color/transparent">
+          </ImageButton>
+   		  <ImageButton android:layout_width="wrap_content"
+        	     	 android:id="@+id/P1EasyButton" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/easy"
+        	     	 android:layout_below="@id/multiPButton" 
+        	     	android:layout_toLeftOf="@id/anchor"
+        	     	 android:layout_marginRight="20dip"
+        	     	 android:layout_marginTop="10dip"
+        	     	 android:background="@android:color/transparent">
+          </ImageButton>
+   		  <ImageButton android:layout_width="wrap_content"
+        	     	 android:id="@+id/P2EasyButton" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/easy"
+        	     	 android:layout_below="@id/multiPButton" 
+        	     	 android:layout_toRightOf="@id/anchor"
+        	     	 android:layout_marginLeft="20dip"
+        	     	 android:layout_marginTop="10dip"
+        	     	 android:background="@android:color/transparent">
+          </ImageButton>
+  		  <ImageButton android:layout_width="wrap_content"
+        	     	 android:id="@+id/P1MediumButton" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/medium"
+        	     	 android:layout_below="@id/P1EasyButton" 
+        	     	 android:layout_toLeftOf="@id/anchor"
+        	     	 android:layout_marginRight="20dip"
+        	     	 android:layout_marginTop="10dip"
+        	     	 android:background="@android:color/transparent">
+          </ImageButton>
+          <ImageButton android:layout_width="wrap_content"
+        	     	 android:id="@+id/P2MediumButton" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/medium"
+        	     	 android:layout_below="@id/P1EasyButton" 
+        	     	 android:layout_toRightOf="@id/anchor"
+        	     	 android:layout_marginLeft="20dip"
+        	     	 android:layout_marginTop="10dip"
+        	     	 android:background="@android:color/transparent">
+          </ImageButton>
+          <ImageButton android:layout_width="wrap_content"
+        	     	 android:id="@+id/P1HardButton" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/hard"
+        	     	 android:layout_below="@id/P1MediumButton" 
+        	     	 android:layout_toLeftOf="@id/anchor"
+        	     	 android:layout_marginRight="20dip"
+        	     	 android:layout_marginTop="10dip"
+        	     	 android:background="@android:color/transparent">
+          </ImageButton>
+          <ImageButton android:layout_width="wrap_content"
+        	     	 android:id="@+id/P2HardButton" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/hard"
+        	     	 android:layout_below="@id/P1MediumButton" 
+        	     	 android:layout_toRightOf="@id/anchor"
+        	     	 android:layout_marginLeft="20dip"
+        	     	 android:layout_marginTop="10dip"
+        	     	 android:background="@android:color/transparent">
+          </ImageButton> -->
+  		  <ImageButton android:layout_width="wrap_content"
+        	     	 android:id="@+id/startButton" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/startselector"
+        	     	 android:layout_below="@+id/spinner1"
+        	     	 	 
+        	     	 android:layout_centerHorizontal="true"
+        	     	 android:layout_marginTop="100dp"
+        	     	 android:background="@android:color/transparent">
+          </ImageButton>
+          <TextView android:layout_width="wrap_content" 
+          			android:layout_height="wrap_content" 
+          			android:id="@+id/textView1" 
+          			android:text="Select Difficulty" 
+          			android:layout_below="@+id/checkBoxSingleplayer" 
+          			android:layout_centerHorizontal="true" 
+          			android:layout_marginTop="30dp">
+          </TextView>
+          <Spinner 	android:layout_width="wrap_content" 
+          			android:id="@+id/spinner1" 
+          			android:layout_height="wrap_content" 
+          			android:layout_below="@+id/textView1" 
+          			android:layout_centerHorizontal="true"
+          			android:layout_marginTop="10dp">
+          	</Spinner>
+          <Button 	android:layout_width="wrap_content" 
+          			android:id="@+id/backButton" 
+          			android:layout_height="wrap_content" 
+          			android:text="Back" 
+          			android:layout_alignParentBottom="true" 
+          			android:layout_alignParentLeft="true">
+          </Button>
+          
+</RelativeLayout>

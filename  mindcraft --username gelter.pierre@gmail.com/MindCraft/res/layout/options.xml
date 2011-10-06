@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  				xmlns:android="http://schemas.android.com/apk/res/android"
+  				android:layout_width="fill_parent"
+  				android:layout_height="fill_parent"
+  				android:background="@drawable/background"
+  				android:id="@+id/newGameLayout">
+  				
+    <SeekBar 	android:layout_width="150dp" 
+             	android:layout_height="wrap_content"
+             	android:id="@+id/test" 
+             	android:layout_alignParentLeft="true" 
+             	android:layout_below="@+id/speed" 
+             	android:layout_marginLeft="20dp">
+             	<!--  android:layout_marginTop="203dp"> -->
+    </SeekBar>
+    <!--  android:layout_alignParentTop="true" -->
+    <TextView 	android:layout_width="wrap_content" 
+    			android:id="@+id/testview" 
+    			android:layout_height="wrap_content"
+    			android:text="TextView" 
+    			android:layout_alignBottom="@+id/test" 
+    			android:layout_toRightOf="@+id/test" 
+    			android:layout_marginLeft="10dp">
+    </TextView>
+    <SeekBar 	android:layout_width="150dp" 
+    			android:layout_height="wrap_content" 
+    			android:id="@+id/test1" 
+    			android:layout_marginLeft="20dp"
+    			android:layout_below="@+id/waittime" 
+    			android:layout_alignParentLeft="true">
+    </SeekBar>
+    <SeekBar 	android:layout_width="150dp" 
+    			android:layout_height="wrap_content"
+     		 	android:id="@+id/test2"
+     		 	android:layout_marginLeft="20dp"
+      			android:layout_below="@+id/incr_diff" 
+      			android:layout_alignParentLeft="true">
+    </SeekBar>
+    <SeekBar 	android:layout_width="150dp" 
+    			android:layout_height="wrap_content" 
+    			android:id="@+id/test3" 
+    			android:layout_marginLeft="20dp"
+    			android:layout_below="@+id/pattern_complete_time" 
+    			android:layout_alignParentLeft="true">
+    </SeekBar>
+    <SeekBar 	android:layout_width="150dp" 
+    			android:layout_height="wrap_content" 
+    			android:id="@+id/test4" 
+    			android:layout_marginLeft="20dp"
+    			android:layout_below="@+id/show_time_pattern" 
+    			android:layout_alignParentLeft="true">
+    </SeekBar>
+    <TextView android:layout_width="wrap_content"
+     		  android:id="@+id/testview1" 
+     		  android:layout_height="wrap_content" 
+     		  android:text="TextView" 
+     		  android:layout_alignBottom="@+id/test1" 
+     		  android:layout_toRightOf="@+id/test1"
+     		  android:layout_marginLeft="10dp">
+    </TextView>
+    <TextView 	android:layout_width="wrap_content" 
+    			android:id="@+id/testview2" 
+    			android:layout_height="wrap_content" 
+    			android:text="TextView" 
+    			android:layout_alignBottom="@+id/test2" 
+    			android:layout_alignLeft="@+id/testview1"
+    			android:layout_marginLeft="0dp">
+    </TextView>
+    <TextView 	android:layout_width="wrap_content" 
+    			android:id="@+id/testview3" 
+    			android:layout_height="wrap_content" 
+    			android:text="TextView" 
+    			android:layout_alignBottom="@+id/test3" 
+    			android:layout_toRightOf="@+id/test3"
+    			android:layout_marginLeft="10dp">
+    </TextView>
+    <TextView 	android:layout_width="wrap_content" 
+    			android:id="@+id/testview4" 
+    			android:layout_height="wrap_content" 
+    			android:text="TextView" 
+    			android:layout_alignBottom="@+id/test4" 
+    			android:layout_alignLeft="@+id/testview3"
+    			android:layout_marginLeft="0dp">
+    </TextView>
+    <Spinner 	android:layout_width="wrap_content" 
+    			android:id="@+id/spinner1" 
+    			android:layout_marginTop="10dp"
+    			android:layout_height="wrap_content" 
+    			android:layout_alignLeft="@+id/test"
+    			android:layout_alignRight="@+id/button1"
+    			android:layout_marginRight="120dp"
+    			>
+   </Spinner>
+    <Button 	android:layout_width="wrap_content" 
+    			android:id="@+id/createNew" 
+    			android:text="New difficulty"
+    			android:layout_height="wrap_content"
+    			android:layout_marginTop="10dp"
+    			android:layout_alignParentTop="true" 
+    			android:layout_alignParentRight="true">
+    </Button>
+    <Button 	android:layout_width="wrap_content" 
+    			android:text="Edit Option" 
+    			android:id="@+id/optionsEdit" 
+    			android:layout_height="wrap_content" 
+    			android:layout_alignParentBottom="true" 
+    			android:layout_alignParentRight="true">
+    </Button>
+    <Button 	android:layout_width="wrap_content" 
+    			android:text="Cancel" 
+    			android:id="@+id/optionsCancel" 
+    			android:layout_height="wrap_content" 
+    			android:layout_alignParentBottom="true" 
+    			android:layout_toLeftOf="@+id/optionsEdit">
+   	</Button>
+    <Button 	android:layout_width="wrap_content" 
+    			android:text="Delete Option" 
+    			android:id="@+id/optionsDelete" 
+    			android:layout_height="wrap_content" 
+    			android:layout_alignParentBottom="true" 
+    			android:layout_alignParentLeft="true">
+    </Button>
+    <TextView 	android:id="@+id/speed" 
+    			android:layout_width="wrap_content" 
+    			android:text="derp" 
+    			android:layout_height="wrap_content" 
+    			android:layout_below="@+id/spinner1" 
+    			android:layout_marginLeft="10dp" 
+    			android:layout_marginTop="74dp">
+    </TextView>
+    <TextView 	android:id="@+id/waittime" 
+    			android:layout_width="wrap_content" 
+    			android:text="derka" 
+    			android:layout_height="wrap_content" 
+    			android:layout_centerVertical="true" 
+    			android:layout_alignLeft="@+id/textView1"
+    			android:layout_marginLeft="10dp"
+    			android:layout_below="@+id/test">
+    </TextView>
+    <TextView 	android:id="@+id/incr_diff" 
+    			android:layout_width="wrap_content" 
+    			android:text="herp" 
+    			android:layout_height="wrap_content" 
+    			android:layout_below="@+id/test1" 
+    			android:layout_alignLeft="@+id/textView1"
+    			android:layout_marginLeft="10dp"> 
+    			<!-- android:layout_marginTop="37dp"> -->
+    </TextView>
+    <TextView 	android:id="@+id/pattern_complete_time" 
+    			android:layout_width="wrap_content" 
+    			android:text="hurrr" 
+    			android:layout_height="wrap_content" 
+    			android:layout_below="@+id/test2" 
+    			android:layout_alignRight="@+id/textView3"
+    			android:layout_marginLeft="10dp"> 
+    			<!-- android:layout_marginTop="24dp">  -->
+    </TextView>
+    <TextView 	android:id="@+id/show_time_pattern" 
+    			android:layout_width="wrap_content" 
+    			android:text="durrrr" 
+    			android:layout_height="wrap_content" 
+    			android:layout_below="@+id/test3" 
+    			android:layout_alignRight="@+id/textView4"
+    			android:layout_marginLeft="10dp"> 
+    			<!-- android:layout_marginTop="35dp">  -->
+    </TextView>
+
+    
+</RelativeLayout>
