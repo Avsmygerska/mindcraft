@@ -8,7 +8,8 @@ import android.widget.TextView;
 
 public class Scoreboard extends Activity{
 	
-	private TextView highscore; 
+	private TextView highscoreName;
+	private TextView highscoreScore;
 	DbHelper helper;
     ReadHighScore rs;
 		
@@ -19,27 +20,25 @@ public class Scoreboard extends Activity{
 		super.onCreate(savedInstanceState);
 		System.out.println("\n \n \n \n \n derp \n \n \n \n \n \n");
 		setContentView(R.layout.scoreboard);
-		this.highscore = (TextView) this.findViewById(R.id.firstName);
+		this.highscoreName = (TextView) this.findViewById(R.id.firstName);
+		this.highscoreScore = (TextView) this.findViewById(R.id.firstScore);
 		
 		//System.out.println("\n \n \n \n \n derp \n \n \n \n \n \n");
 		
 		//highscore.setText("Derp");
 		
-			
-		helper = new DbHelper(this);
-		final SQLiteDatabase db = helper.getWritableDatabase();
-		rs = new ReadHighScore(helper);
-		Cursor cursor = rs.read();
+			 
+		this.helper = new DbHelper(this);
+		final SQLiteDatabase db = this.helper.getWritableDatabase();
+		this.rs = new ReadHighScore(this.helper);
+		Cursor cursor = this.rs.read();
 		cursor.moveToFirst();
 		System.out.println(cursor.getCount());
 		for(int i = 0; i < cursor.getCount(); i++){
 			int t = cursor.getColumnIndex(DbHelper.C_NAME);
 			int z = cursor.getColumnIndex(DbHelper.C_POINTS);
-			if(i == 0){
-				highscore.setText(cursor.getString(t) + ", " + cursor.getString(z) + " \n", TextView.BufferType.EDITABLE );
-			}
-			else
-				highscore.setText(highscore.getText() + cursor.getString(t) + ", " + cursor.getString(z) + " \n", TextView.BufferType.EDITABLE );
+			this.highscoreName.setText(cursor.getString(t), TextView.BufferType.EDITABLE );
+			this.highscoreScore.setText(cursor.getString(z), TextView.BufferType.EDITABLE );
 			//show.setText(cursor.getCount()+"", EditText.BufferType.EDITABLE );
 			cursor.moveToNext();
 			

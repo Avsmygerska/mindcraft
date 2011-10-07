@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -76,7 +77,8 @@ public class New_Game extends Activity implements OnClickListener, OnItemSelecte
 		
 		if(v.getId() == R.id.startButton){
 			if(singleplayer.isChecked() || multiplayer.isChecked() ){
-				//StartGame
+				Intent intent = new Intent(getBaseContext(), Game_View.class);
+        		New_Game.this.startActivity(intent);
 			}else{
 				showDialog(NOT_SELECTED_MODE);
 			}

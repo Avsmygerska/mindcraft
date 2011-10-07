@@ -8,7 +8,7 @@
         	     	 android:id="@+id/logoView" 
         	     	 android:layout_height="wrap_content" 
         	     	 android:src="@drawable/logo"
-        	     	 android:layout_marginTop="10dip" 
+        	     	 android:layout_marginTop="10sp" 
         	     	 android:layout_centerHorizontal="true">
           </ImageView>
         <ImageButton android:layout_width="wrap_content" 
@@ -17,7 +17,7 @@
         			 android:id="@+id/newGameButton"
         			 android:layout_centerHorizontal="true"
         			 android:layout_below="@id/logoView"
-        			 android:layout_marginTop="20dip"
+        			 android:layout_marginTop="20sp"
         			 android:background="@android:color/transparent">
         </ImageButton>
         <ImageButton android:layout_width="wrap_content" 
@@ -26,7 +26,7 @@
         			 android:id="@+id/loadGameButton" 
         			 android:layout_centerHorizontal="true"
         			 android:layout_below="@id/newGameButton"
-        			 android:layout_marginTop="20dip"
+        			 android:layout_marginTop="20sp"
         			 android:background="@android:color/transparent">
         </ImageButton>
         <ImageButton android:layout_width="wrap_content" 
@@ -35,7 +35,7 @@
         			 android:id="@+id/highScoresButton" 
         			 android:layout_centerHorizontal="true"
         			 android:layout_below="@id/loadGameButton"
-        			 android:layout_marginTop="20dip"
+        			 android:layout_marginTop="20sp"
         			 android:background="@android:color/transparent">
         </ImageButton>
         <ImageButton android:layout_width="wrap_content"
@@ -44,7 +44,7 @@
         			 android:id="@+id/optionsButton" 
         			 android:layout_centerHorizontal="true"
         			 android:layout_below="@id/highScoresButton"
-        			 android:layout_marginTop="20dip"
+        			 android:layout_marginTop="20sp"
         			 android:background="@android:color/transparent">
         </ImageButton>
         <ImageButton android:layout_width="wrap_content" 
@@ -53,7 +53,7 @@
         			 android:id="@+id/aboutButton" 
         			 android:layout_centerHorizontal="true"
         			 android:layout_below="@id/optionsButton"
-        			 android:layout_marginTop="20dip"
+        			 android:layout_marginTop="20sp"
         			 android:background="@android:color/transparent">
         </ImageButton>      
     </RelativeLayout>

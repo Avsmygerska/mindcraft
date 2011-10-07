@@ -7,19 +7,20 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
+import android.widget.Button;
 import android.widget.ListView;
 
-public class Load_Game extends Activity implements OnItemClickListener{
+public class Load_Game extends Activity implements OnItemClickListener,OnClickListener{
 	
 	Dialog dia = null;
 	private static final int PRESSED_A_SAVE=1;
 	static String lastClicked;
+	private Button cancel;
 	private ListView singleplayer, multiplayer;
 	private String lv_arr[]={"Android","iPhone","BlackBerry","AndroidPeople"};
 	ArrayList<CharSequence> loadSingleplayer,loadMultiplayer;
@@ -29,7 +30,8 @@ public class Load_Game extends Activity implements OnItemClickListener{
 		super.onCreate(icicle);
 		setContentView(R.layout.loadgame);
 		
-		
+		this.cancel = (Button) this.findViewById(R.id.loadGameCancel);
+		cancel.setOnClickListener(this);
 		loadSingleplayer = new ArrayList<CharSequence>();
 		loadMultiplayer = new ArrayList<CharSequence>();
 		loadMultiplayer.add("perp");
@@ -102,6 +104,14 @@ public class Load_Game extends Activity implements OnItemClickListener{
 	
 	public static String getLastClicked(){
 		return lastClicked;
+	}
+	@Override
+	public void onClick(View arg0) {
+		// TODO Auto-generated method stub
+		Load_Game.this.finish();
+		// do something
+		
+		
 	}
 	
 }

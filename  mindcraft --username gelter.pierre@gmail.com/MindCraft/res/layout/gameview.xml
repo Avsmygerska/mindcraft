@@ -6,6 +6,20 @@
   android:layout_height="fill_parent"
   android:background="@drawable/background"
   android:id="@+id/GameViewLayout">
+  
+  <TextView 	android:layout_height="wrap_content" 
+  				android:text="" 
+  				android:layout_width="wrap_content" 
+  				android:id="@+id/mTextField" 
+  				android:layout_alignParentTop="true"
+  				android:textSize="50sp"
+  				android:textStyle="bold"
+  				android:textColor="#FF0000"
+  				android:layout_centerInParent="true"
+  				android:layout_marginTop="32dp"></TextView>
+  
+  
+  
   <ImageButton 	 android:layout_width="wrap_content"
         	     	 android:id="@+id/Button1" 
         	     	 android:layout_height="wrap_content" 
@@ -85,4 +99,23 @@
         	     	 android:layout_marginLeft="10sp"
         	     	 android:background="@android:color/transparent">
           </ImageButton>
+          <Button 	android:text="Done" 
+          			android:layout_height="wrap_content" 
+          			android:layout_width="wrap_content" 
+          			android:id="@+id/Button10" 
+          			android:layout_below="@+id/Button8" 
+          			android:layout_centerHorizontal="true" 
+          			android:layout_marginTop="20sp"
+          			>
+          </Button>
+          <Button 	android:text="Start" 
+          			android:layout_height="wrap_content" 
+          			android:layout_width="wrap_content" 
+          			android:id="@+id/Button11" 
+          			android:layout_below="@+id/Button8" 
+          			android:layout_centerHorizontal="true" 
+          			android:layout_marginTop="20sp"
+          			>
+          </Button>
+          
 </RelativeLayout>
