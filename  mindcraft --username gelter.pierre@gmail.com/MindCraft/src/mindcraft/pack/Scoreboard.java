@@ -4,14 +4,18 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class Scoreboard extends Activity{
+public class Scoreboard extends Activity implements OnClickListener {
 	
 	private TextView highscoreName;
 	private TextView highscoreScore;
 	DbHelper helper;
     ReadHighScore rs;
+    ImageButton scoreBack;
 		
 	
 	
@@ -22,6 +26,8 @@ public class Scoreboard extends Activity{
 		setContentView(R.layout.scoreboard);
 		this.highscoreName = (TextView) this.findViewById(R.id.firstName);
 		this.highscoreScore = (TextView) this.findViewById(R.id.firstScore);
+		this.scoreBack = (ImageButton) this.findViewById(R.id.scoreBackButton);
+		this.scoreBack.setOnClickListener(this);
 		
 		//System.out.println("\n \n \n \n \n derp \n \n \n \n \n \n");
 		
@@ -44,5 +50,13 @@ public class Scoreboard extends Activity{
 			
 		}
 		db.close();
+	}
+
+
+
+	@Override
+	public void onClick(View arg0) {
+		Scoreboard.this.finish();
+		
 	}
 }
