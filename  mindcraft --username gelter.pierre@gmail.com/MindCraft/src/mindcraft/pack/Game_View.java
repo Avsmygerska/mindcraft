@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -25,20 +26,28 @@ public class Game_View extends Activity implements OnClickListener{
 	button6,button7,button8,button9;
 	Button button10, button11;
 
-	TextView countdown;
+	TextView countdown, timeToStart;
 
 	CountDownTimer tm;
 	private static final int YOU_LOST = 1; 
-	private static final int WELL_DONE = 2;
+	private static final int WELL_DONE_MultiPlayer = 2;
+	private static final int START = 3;
 	private int state = 1;
 	private int current = 0;
-
+	private int currentLength = 5;
+	private int incrementing;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.gameview);
+		
+		//Bundle extras = getIntent().getExtras();
 
-
+		//incrementing = extras.getInt("Incrementing");
+		
+		System.out.println(incrementing);
+		
 		button1  = (ImageButton) this.findViewById(R.id.Button1);
 		button2  = (ImageButton) this.findViewById(R.id.Button2);
 		button3  = (ImageButton) this.findViewById(R.id.Button3);
@@ -66,7 +75,7 @@ public class Game_View extends Activity implements OnClickListener{
 		button11.setVisibility(View.GONE);
 
 		countdown = (TextView) this.findViewById(R.id.mTextField);
-
+		timeToStart = (TextView) this.findViewById(R.id.mTextField2);
 	}
 
 	@Override
@@ -193,35 +202,16 @@ public class Game_View extends Activity implements OnClickListener{
 			Toast toast = Toast.makeText(context, text, duration);
 			toast.show();
 			button10.setVisibility(View.GONE);
-			button11.setVisibility(View.VISIBLE);
-			break;
-		case R.id.Button11:
-
-			state = 2;
-			enableButtons();
-			tm = new CountDownTimer(30000, 1000) {
-
-				public void onTick(long millisUntilFinished) {
-					countdown.setText(""+ millisUntilFinished / 1000);
-				}
-
-				public void onFinish() {
-					countdown.setText("You Lost!");
-					showDialog(YOU_LOST);
-
-				}
-			}.start();
-
-
-			break;
+			showDialog(START);
+		
 		}
 
-		if(state == 1 && list.size() == 5){ 
+		if(state == 1 && list.size() == currentLength){ 
 			disableButtons();
 		}
 		if(state == 2 && current == list.size()){
 			tm.cancel();
-			showDialog(WELL_DONE);
+			showDialog(WELL_DONE_MultiPlayer);
 			reset();
 			
 		}
@@ -239,6 +229,7 @@ public class Game_View extends Activity implements OnClickListener{
 		button8.setEnabled(false);
 		button9.setEnabled(false);
 		button10.setEnabled(true);
+		button11.setEnabled(true);
 
 
 	}
@@ -252,11 +243,14 @@ public class Game_View extends Activity implements OnClickListener{
 		button7.setEnabled(true);
 		button8.setEnabled(true);
 		button9.setEnabled(true);
+		button10.setEnabled(false);
 		button11.setEnabled(false);
 	}
 	public void reset(){
 		list = new ArrayList<Integer>();
 		state = 1;
+		current = 0;
+		countdown.setText("");
 		enableButtons();
 		button10.setVisibility(View.VISIBLE);
 		button11.setVisibility(View.GONE);
@@ -268,26 +262,65 @@ public class Game_View extends Activity implements OnClickListener{
 		switch (id) {
 		case YOU_LOST:
 			return new AlertDialog.Builder(this)
-			.setMessage("PLAYER 1 LOST, PLAYER 2 WON!")
+			.setMessage("")
 			.setCancelable(false)
 			.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int id) {
-					dialog.cancel();
+					//lösklödka
+					
+					Game_View.this.finish();
 				}
 			})
 			.create();	
 
 
-		case WELL_DONE:
+		case WELL_DONE_MultiPlayer:
 			return new AlertDialog.Builder(this)
 			.setMessage("WELL DONE \n\n Next players turn")
 			.setCancelable(false)
 			.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int id) {
+					currentLength = currentLength + incrementing;
 					dialog.cancel();
 				}
 			})
-			.create();	
+			.create();
+			
+		case START:
+			return new AlertDialog.Builder(this)
+			.setMessage("READY TO START?")
+			.setCancelable(false)
+			.setPositiveButton("Start!", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int id) {
+					
+					tm = new CountDownTimer(5000, 1000) {
+
+						public void onTick(long millisUntilFinished) {
+							timeToStart.setText("Seconds untill you may start: "+ millisUntilFinished / 1000);
+						}
+
+						public void onFinish() {
+							state = 2;
+							enableButtons();
+							timeToStart.setText("");
+							tm = new CountDownTimer(30000, 1000) {
+
+								public void onTick(long millisUntilFinished) {
+									countdown.setText(""+ millisUntilFinished / 1000);
+								}
+
+								public void onFinish() {
+									countdown.setText("You Lost!");
+									showDialog(YOU_LOST);
+
+								}
+							}.start();
+
+						}
+					}.start();
+				}
+			})
+			.create();
 		default:
 			break;
 		}
