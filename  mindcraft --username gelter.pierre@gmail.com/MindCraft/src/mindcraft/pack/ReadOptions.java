@@ -23,6 +23,7 @@ public class ReadOptions {
 		String sql = "SELECT NAME FROM "+DbHelper.TABLE2 +";";
 		try{
 			Cursor cursor = db.rawQuery(sql, new String []{});
+			
 			return cursor;
 		}catch(Exception e){
 			

@@ -85,11 +85,11 @@
    		  			android:layout_alignRight="@+id/ScoreboardView">
    		  </TextView>
    		  <ImageButton android:layout_width="wrap_content"
-        	     	 android:id="@+id/scoreBackButton" 
+        	     	 android:id="@+id/returnToMainButton" 
         	     	 android:layout_height="wrap_content" 
         	     	 android:src="@drawable/backselector"
-        	     	 android:layout_marginBottom="10sp"
-        	     	 android:layout_centerHorizontal="true"
+        	     	 android:layout_marginBottom="10dip"
+        	     	 android:layout_alignParentRight="true"
         	     	 android:layout_alignParentBottom="true"
         	     	 android:background="@android:color/transparent">
           </ImageButton>

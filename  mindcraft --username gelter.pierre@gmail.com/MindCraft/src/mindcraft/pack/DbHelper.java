@@ -13,20 +13,20 @@ public class DbHelper extends SQLiteOpenHelper {
   
   // Highscore variables
   public static final String DB_NAME = "mindcraft.db";
-  public static final int DB_VERSION = 16;
+  public static final int DB_VERSION = 17;
   public static final String TABLE = "Highscore";
   public static final String C_ID = BaseColumns._ID; // Special for id
   public static final String C_NAME = "Name";
   public static final String C_POINTS = "Points";
   
   // Options variables 
-  public static final String TABLE2 = "Options";
-  public static final String C_NAME_OPT = "Name";
-  public static final String C_WAITTIME = "Waittime";
-  public static final String C_INCREMENTING_DIFFICULTY = "Incrimenting_Difficulty";
-  public static final String C_PATTERN_COMPLETION_TIME = "Pattern_Completion_Time";
-  public static final String C_SHOW_PATTERN_TIME = "Showing_Time_of_Pattern";
-  public static final String C_SPEED_INTERVAL_PATTERN = "Speed";
+  public static final String TABLE2 = "Options"; 
+  public static final String C_NAME_OPT = "Name"; // 
+  public static final String C_WAITTIME = "Waittime"; //5sec - 180 sec
+  public static final String C_INCREMENTING_DIFFICULTY = "Incrimenting_Difficulty"; //1-6
+  public static final String C_PATTERN_COMPLETION_TIME = "Pattern_Completion_Time"; //0,5-3.0 sec * antal
+  public static final String C_SHOW_PATTERN_TIME = "Showing_Time_of_Pattern"; //0.5 - 3.0 sec 
+  public static final String C_SPEED_INTERVAL_PATTERN = "Speed"; //0% - 50% 
   
   // Save Game variables
   public static final String TABLE3 		= "Saved_Games";
@@ -85,11 +85,11 @@ public class DbHelper extends SQLiteOpenHelper {
   public boolean testOptionsStart(SQLiteDatabase db){
 	  ContentValues values = new ContentValues();
 	  values.put(DbHelper.C_NAME_OPT, "Default");
-	  values.put(DbHelper.C_WAITTIME, 50);
-	  values.put(DbHelper.C_INCREMENTING_DIFFICULTY, 50);
-	  values.put(DbHelper.C_PATTERN_COMPLETION_TIME, 50);
-	  values.put(DbHelper.C_SHOW_PATTERN_TIME, 50);
-	  values.put(DbHelper.C_SPEED_INTERVAL_PATTERN, 50);
+	  values.put(DbHelper.C_WAITTIME, 5000);
+	  values.put(DbHelper.C_INCREMENTING_DIFFICULTY, 1);
+	  values.put(DbHelper.C_PATTERN_COMPLETION_TIME, 2000);
+	  values.put(DbHelper.C_SHOW_PATTERN_TIME, 1000);
+	  values.put(DbHelper.C_SPEED_INTERVAL_PATTERN, 0);
 	  db.insertWithOnConflict(DbHelper.TABLE2, null, values,
 				SQLiteDatabase.CONFLICT_REPLACE);
 	  return true;

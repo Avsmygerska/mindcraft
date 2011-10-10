@@ -17,13 +17,27 @@ public class main extends Activity {
 	Scoreboard score;
 	
     /** Called when the activity is first created. */
-	//MainMenu buttons
+	//MainMenu buttons.
 	private ImageButton newButton;
 	private ImageButton loadButton;
 	private ImageButton highscoreButton;
 	private ImageButton optionsButton;
 	private ImageButton aboutButton;
-
+	
+	//NewGame buttons
+	private ImageButton singlePButton;
+	private ImageButton multiPButton;
+	private ImageButton startNewGameButton;
+	
+	//LoadGame buttons
+	private ImageButton resumeGameButton;
+	
+	//Options buttons
+	
+	//Generic buttons
+	private ImageButton returnToMain;
+	
+	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
 		//his.savedInstanceState = savedInstanceState;
@@ -31,11 +45,11 @@ public class main extends Activity {
         setContentView(R.layout.main);
         
                         
-        this.dbhelp = new DbHelper(main.this); 
+        dbhelp = new DbHelper(main.this); 
         //final SQLiteDatabase db = dbhelp.getReadableDatabase();
         //db.close();
         
-        this.score = new Scoreboard();
+        score = new Scoreboard();
         
         this.newButton = (ImageButton)this.findViewById(R.id.newGameButton);
         this.loadButton = (ImageButton)this.findViewById(R.id.loadGameButton);
@@ -46,6 +60,7 @@ public class main extends Activity {
         this.newButton.setOnClickListener(new OnClickListener() {
           @Override
           public void onClick(View v) { 
+           //main.this.setContentView(R.layout.newgame);
         	 try{
          		 Intent intent = new Intent(getBaseContext(), New_Game.class);
          		 main.this.startActivity(intent);
@@ -73,7 +88,8 @@ public class main extends Activity {
             		 //score.highscore(dbhelp);
             	 }catch(Exception e){
             		 e.printStackTrace();
-            	 }	 
+            	 }
+            	 
              }
            });
          this.optionsButton.setOnClickListener(new OnClickListener() {
@@ -91,8 +107,6 @@ public class main extends Activity {
          this.aboutButton.setOnClickListener(new OnClickListener() {
              @Override
              public void onClick(View v) {
-            	 Intent intent = new Intent(getBaseContext(), About.class);
-            	 main.this.startActivity(intent);
               //main.this.setContentView(R.layout.about);
              }
            });

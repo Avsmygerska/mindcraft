@@ -24,13 +24,18 @@ public class StoreOptions {
 		ContentValues values1 = new ContentValues();
 
 		values1.put(DbHelper.C_NAME_OPT, data[0]);
-		values1.put(DbHelper.C_SPEED_INTERVAL_PATTERN, Integer.parseInt(data[1]));
-		values1.put(DbHelper.C_WAITTIME, Integer.parseInt(data[2]));
-		values1.put(DbHelper.C_INCREMENTING_DIFFICULTY,Integer.parseInt(data[3]));
-		values1.put(DbHelper.C_PATTERN_COMPLETION_TIME,Integer.parseInt(data[4]));
-		values1.put(DbHelper.C_SHOW_PATTERN_TIME, Integer.parseInt(data[5]));
-
-
+		System.out.println(DbHelper.C_NAME_OPT + "," + data[0]);
+		values1.put(DbHelper.C_INCREMENTING_DIFFICULTY,Integer.parseInt(data[1]));
+		System.out.println(DbHelper.C_INCREMENTING_DIFFICULTY + ", " + Integer.parseInt(data[1]));
+		values1.put(DbHelper.C_PATTERN_COMPLETION_TIME,Integer.parseInt(data[2]));
+		System.out.println(DbHelper.C_PATTERN_COMPLETION_TIME + ", " + Integer.parseInt(data[2]));
+		values1.put(DbHelper.C_WAITTIME, Integer.parseInt(data[3]));
+		System.out.println(DbHelper.C_WAITTIME + ", " +  Integer.parseInt(data[3]));
+		values1.put(DbHelper.C_SHOW_PATTERN_TIME, Integer.parseInt(data[4]));
+		System.out.println(DbHelper.C_SHOW_PATTERN_TIME+ ", "+ Integer.parseInt(data[4]));
+		values1.put(DbHelper.C_SPEED_INTERVAL_PATTERN, Integer.parseInt(data[5]));
+		System.out.println(DbHelper.C_SPEED_INTERVAL_PATTERN + ", " + Integer.parseInt(data[5]));
+		
 		try{
 			String sql = "select * from " + DbHelper.TABLE2 + " where "+ DbHelper.C_NAME_OPT +" = '"+ data[0]+"';" ; 
 			db = helper.getWritableDatabase();
@@ -64,11 +69,16 @@ public class StoreOptions {
 	public boolean update(String[]data){
 		db = helper.getWritableDatabase();
 		ContentValues cv = new ContentValues();
-		cv.put(DbHelper.C_SPEED_INTERVAL_PATTERN, Integer.parseInt(data[1]));
-		cv.put(DbHelper.C_WAITTIME, Integer.parseInt(data[2]));
-		cv.put(DbHelper.C_INCREMENTING_DIFFICULTY,Integer.parseInt(data[3]));
-		cv.put(DbHelper.C_PATTERN_COMPLETION_TIME,Integer.parseInt(data[4]));
-		cv.put(DbHelper.C_SHOW_PATTERN_TIME, Integer.parseInt(data[5]));
+		cv.put(DbHelper.C_INCREMENTING_DIFFICULTY, Integer.parseInt(data[1]));
+		System.out.println(DbHelper.C_INCREMENTING_DIFFICULTY + ", " + Integer.parseInt(data[1]));
+		cv.put(DbHelper.C_PATTERN_COMPLETION_TIME, Integer.parseInt(data[2]));
+		System.out.println(DbHelper.C_PATTERN_COMPLETION_TIME + ", " + Integer.parseInt(data[2]));
+		cv.put(DbHelper.C_WAITTIME,Integer.parseInt(data[3]));
+		System.out.println(DbHelper.C_PATTERN_COMPLETION_TIME + ", " +  Integer.parseInt(data[3]));
+		cv.put(DbHelper.C_SHOW_PATTERN_TIME,Integer.parseInt(data[4]));
+		System.out.println(DbHelper.C_SHOW_PATTERN_TIME+ ", "+ Integer.parseInt(data[4]));
+		cv.put(DbHelper.C_SPEED_INTERVAL_PATTERN, Integer.parseInt(data[5]));
+		System.out.println(DbHelper.C_SPEED_INTERVAL_PATTERN + ", " + Integer.parseInt(data[5]));
 
 		String[] temp = {data[0]};
 

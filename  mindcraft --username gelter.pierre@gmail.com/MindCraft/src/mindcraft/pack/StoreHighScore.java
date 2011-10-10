@@ -9,9 +9,9 @@ public class StoreHighScore {
 	private DbHelper helper;
 	private SQLiteDatabase db;
 
-	public StoreHighScore(DbHelper helper, SQLiteDatabase db){
+	public StoreHighScore(DbHelper helper){
 		this.helper = helper;
-		this.db 	= db;
+		
 	}
 
 	public boolean store(String text){
@@ -44,6 +44,7 @@ public class StoreHighScore {
 				return true;
 
 			}
+			
 		}catch(Exception e){
 			
 			e.printStackTrace();

@@ -25,6 +25,8 @@ public class New_Game extends Activity implements OnClickListener, OnItemSelecte
 	
 	private static final int NOT_SELECTED_MODE = 1;
 	
+	String currentDifficultySelected = "Default";
+	
 	ReadOptions ro;
 	DbHelper help;
 	List<CharSequence> difficulty;
@@ -77,8 +79,17 @@ public class New_Game extends Activity implements OnClickListener, OnItemSelecte
 		
 		if(v.getId() == R.id.startButton){
 			if(singleplayer.isChecked() || multiplayer.isChecked() ){
-				Intent intent = new Intent(getBaseContext(), Game_View.class);
+				System.out.println(currentDifficultySelected);
+				
+				Intent intent = new Intent("Game_View");
+				intent.putExtra("DifficultyName", currentDifficultySelected);
+				if(singleplayer.isChecked())
+					intent.putExtra("Mode", 1);
+				else
+					intent.putExtra("Mode", 2);
+				
         		New_Game.this.startActivity(intent);
+        		New_Game.this.finish();
 			}else{
 				showDialog(NOT_SELECTED_MODE);
 			}
@@ -101,8 +112,11 @@ public class New_Game extends Activity implements OnClickListener, OnItemSelecte
 	}
 
 	@Override
-	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
+	public void onItemSelected(AdapterView<?> parent, View view, int pos,
 			long arg3) {
+		
+		currentDifficultySelected = parent.getItemAtPosition(pos).toString();  
+		System.out.println(currentDifficultySelected);
 		
 	}
 
