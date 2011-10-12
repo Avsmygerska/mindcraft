@@ -1,8 +1,10 @@
 package mindcraft.pack;
 
+
+import mindcraft.database.DatabaseController;
+
 import android.app.Activity;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,7 +15,6 @@ public class main extends Activity {
 	
 	final Bundle savedInstanceState = null;
 	
-	DbHelper dbhelp;
 	Scoreboard score;
 	
     /** Called when the activity is first created. */
@@ -44,8 +45,9 @@ public class main extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-                        
-        dbhelp = new DbHelper(main.this); 
+        DatabaseController.initialize(this);          
+        //dbhelp = new DbHelper(main.this);
+        
         //final SQLiteDatabase db = dbhelp.getReadableDatabase();
         //db.close();
         
@@ -102,12 +104,13 @@ public class main extends Activity {
             	//score.onCreate(this.savedInstanceState );
             	 
               //main.this.setContentView(R.layout.options);
-             }
+             } 
            });
          this.aboutButton.setOnClickListener(new OnClickListener() {
              @Override
              public void onClick(View v) {
-              //main.this.setContentView(R.layout.about);
+            	 Intent intent = new Intent(getBaseContext(), About.class);
+            	 main.this.startActivity(intent);
              }
            });
     }

@@ -3,19 +3,15 @@ package mindcraft.pack;
 import java.util.ArrayList;
 import java.util.List;
 
+import mindcraft.database.DatabaseController;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.text.method.KeyListener;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnKeyListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
@@ -26,39 +22,27 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class Options extends Activity implements OnSeekBarChangeListener, OnClickListener, OnItemSelectedListener{
-
-	ArrayList<Integer> currentSelectedOptions;
-	boolean tryToDeleteDefault = false;
-	ArrayAdapter <CharSequence> adapter;
+public class Options extends Activity implements OnSeekBarChangeListener, OnClickListener, 
+																	OnItemSelectedListener{
+	
+	private List<CharSequence> difficulty;
+	private ArrayList<Integer> currentSelectedOptions;
+	private ArrayAdapter <CharSequence> adapter;
+	private Spinner spinner;
+	private String defaultValue = "";
+	
 	private int SPINNER_SELECTED;
-	Spinner spinner;
-	String defaultValue = "";
 	private static final int CATEGORY_DETAIL = 1;
 	private static final int DELETE_OPTION = 2;
 	private static final int UPDATE_OPTION = 3;
 	private static final int TRIED_TO_DELETE_DEFAULT = 4;
 	private static final int TRIED_TO_UPDATE_DEFAULT = 5;
-	SeekBar test;
-	SeekBar test1;
-	SeekBar test2;
-	SeekBar test3;
-	SeekBar test4;
-	TextView testView;
-	TextView testView1;
-	TextView testView2;
-	TextView testView3;
-	TextView testView4;
-	DbHelper helper; 
-	SQLiteDatabase db; 
-	ReadOptions ro;
-	StoreOptions so;
-	Button createNew;
-	Button optionDelete;
-	Button optionEdit;
-	Button optionCancel;
-	List<CharSequence> difficulty;
-	EditText et;
+	private SeekBar test, test1, test2, test3, test4;
+	private TextView testView, testView1, testView2, testView3, testView4;
+	 
+	private Button createNew, optionDelete, optionEdit, optionCancel;
+	boolean tryToDeleteDefault = false;
+	private DatabaseController dc;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -68,8 +52,6 @@ public class Options extends Activity implements OnSeekBarChangeListener, OnClic
 		
 		int testTime = 36;
 		int max = 5;
-		double curr = 2.5;
-		int min = 20;
 
 		this.test = (SeekBar) this.findViewById(R.id.test);
 		this.testView = (TextView) this.findViewById(R.id.testview);
@@ -95,39 +77,28 @@ public class Options extends Activity implements OnSeekBarChangeListener, OnClic
 		optionEdit.setOnClickListener(this);
 
 		test.setMax(max);
-		//test.setProgress(cur);
 		test.setOnSeekBarChangeListener(Options.this);
 		test1.setMax(max);
-		//test1.setProgress(cur);
 		test1.setOnSeekBarChangeListener(Options.this);
 		test2.setMax(testTime);
-		//test2.setProgress(cur);
 		test2.setOnSeekBarChangeListener(Options.this);
 		test3.setMax(max);
-		//test3.setProgress(cur);
 		test3.setOnSeekBarChangeListener(Options.this);
 		test4.setMax(max);
-		//test4.setProgress(cur);
 		test4.setOnSeekBarChangeListener(Options.this);
 
 		difficulty = new ArrayList<CharSequence>();
-		helper = new DbHelper(this);
-		so = new StoreOptions(helper);
-		ro = new ReadOptions(helper);
-		Cursor c = ro.readAll();
-		c.moveToFirst();
-		for(int i = 0; i < c.getCount(); i++){ 
-			int a = c.getColumnIndex(DbHelper.C_NAME_OPT);
-			difficulty.add(c.getString(a));
-			c.moveToNext();
-
+		dc = DatabaseController.initialize();
+		
+		String[] options = dc.readAllOptions();
+		
+		for(int i = 0; i < options.length; i++){ 
+			difficulty.add(options[i]);
 		}
+		
 		spinner = (Spinner) findViewById(R.id.spinner1); 
 		adapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item, difficulty);
-
-		//difficulty.add("derpderp");
-		//difficulty.add("herpa");
-
+		
 		spinner.setOnItemSelectedListener(this);
 		spinner.setAdapter(adapter);
 
@@ -137,7 +108,7 @@ public class Options extends Activity implements OnSeekBarChangeListener, OnClic
 	@Override
 	public void onProgressChanged(SeekBar seekBar, int progress,
 			boolean fromUser) {
-		//System.out.println(seekBar + ", " + progress);
+
 		if(!adapter.getItem(SPINNER_SELECTED).toString().equals("Default")){
 
 			if(seekBar == test){
@@ -188,8 +159,6 @@ public class Options extends Activity implements OnSeekBarChangeListener, OnClic
 			} 
 
 		}
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -197,7 +166,6 @@ public class Options extends Activity implements OnSeekBarChangeListener, OnClic
 		switch (v.getId()) {
 		case R.id.optionsCancel:
 			Options.this.finish();
-			// do something
 			break;
 		case R.id.optionsDelete:
 			if(adapter.getItem(SPINNER_SELECTED).toString().equals("Default"))
@@ -211,14 +179,10 @@ public class Options extends Activity implements OnSeekBarChangeListener, OnClic
 				showDialog(TRIED_TO_UPDATE_DEFAULT);
 			else
 				showDialog(UPDATE_OPTION);
-			// do something else
 			break;
 
 		case R.id.createNew:
-			// do something else
 			showDialog(CATEGORY_DETAIL); 
-
-
 			break;
 		}
 
@@ -231,26 +195,18 @@ public class Options extends Activity implements OnSeekBarChangeListener, OnClic
 
 		SPINNER_SELECTED = pos;
 		System.out.println("\n \n" + SPINNER_SELECTED +"\n \n");
-		//db = helper.getWritableDatabase();
-		Cursor cursor = ro.readOption(parent.getItemAtPosition(pos).toString());
-		if(cursor.getCount()==0){
-
+		String[] cursor = dc.readOption(parent.getItemAtPosition(pos).toString());
+		if(cursor.length==0){
+			
 		}
 		else{
 			currentSelectedOptions = new ArrayList<Integer>();
-			cursor.moveToFirst();
-			
-			int a = cursor.getColumnIndex(DbHelper.C_INCREMENTING_DIFFICULTY);
-			int b = cursor.getColumnIndex(DbHelper.C_PATTERN_COMPLETION_TIME);
-			int c = cursor.getColumnIndex(DbHelper.C_WAITTIME);
-			int d = cursor.getColumnIndex(DbHelper.C_SHOW_PATTERN_TIME);
-			int e = cursor.getColumnIndex(DbHelper.C_SPEED_INTERVAL_PATTERN);
-			
-			Integer incr	= Integer.parseInt(cursor.getString(a));
-			Integer patt	= (Integer.parseInt(cursor.getString(b))/500);
-			Integer wait	= (Integer.parseInt(cursor.getString(c))/5000);
-			Integer show	= Integer.parseInt(cursor.getString(d))/1000;
-			Integer speed	= Integer.parseInt(cursor.getString(e))/10;
+		
+			Integer wait	= (Integer.parseInt(cursor[1])/5000);
+			Integer incr	= Integer.parseInt(cursor[2]);
+			Integer patt	= (Integer.parseInt(cursor[3])/500);
+			Integer show	= Integer.parseInt(cursor[4])/1000;
+			Integer speed	= Integer.parseInt(cursor[5])/10;
 			
 			test.setProgress(incr-1);
 			test1.setProgress(patt-1);
@@ -258,11 +214,11 @@ public class Options extends Activity implements OnSeekBarChangeListener, OnClic
 			test3.setProgress(show);
 			test4.setProgress(speed);
 			
-			currentSelectedOptions.add(Integer.parseInt(cursor.getString(a)));
-			currentSelectedOptions.add((Integer.parseInt(cursor.getString(b))/500));
-			currentSelectedOptions.add((Integer.parseInt(cursor.getString(c))/5000));
-			currentSelectedOptions.add(Integer.parseInt(cursor.getString(d))/1000);
-			currentSelectedOptions.add(Integer.parseInt(cursor.getString(e)));
+			currentSelectedOptions.add(incr);
+			currentSelectedOptions.add(patt);
+			currentSelectedOptions.add(wait);
+			currentSelectedOptions.add(show);
+			currentSelectedOptions.add(speed*10);
 			
 
 			testView.setText((incr) + " extra patterns per turn"); // Retarded textview
@@ -270,7 +226,7 @@ public class Options extends Activity implements OnSeekBarChangeListener, OnClic
 			testView2.setText(wait.doubleValue()*5+ " seconds"); // Retarded textview
 			testView3.setText(show.doubleValue()/2 + 0.5+ " seconds"); // Retarded textview
 			testView4.setText(speed*10+ " percent"); // Retarded textview
-
+					
 		}
 
 
@@ -306,15 +262,14 @@ public class Options extends Activity implements OnSeekBarChangeListener, OnClic
 
 						String[] newOpt = {et.getText().toString(),"1","2000","5000","1000","0" };
 						difficulty.add(et.getText().toString());
-						so.store(newOpt);
-						//... some code
+						dc.storeOption(newOpt);
 					}
 				}
 			});
 
 			categoryDetail.setButton2("Cancel", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
-					return;
+					dialog.cancel();
 				}}); 
 
 			return categoryDetail;
@@ -325,7 +280,7 @@ public class Options extends Activity implements OnSeekBarChangeListener, OnClic
 			.setCancelable(false)
 			.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int id) {
-					so.delete(difficulty.get(SPINNER_SELECTED).toString());
+					dc.deleteOption(difficulty.get(SPINNER_SELECTED).toString());
 					adapter.remove(adapter.getItem(SPINNER_SELECTED));
 
 				}
@@ -348,7 +303,7 @@ public class Options extends Activity implements OnSeekBarChangeListener, OnClic
 							test2.getProgress()*5000+5000 + "", 
 							test3.getProgress()*500+500 + "", 
 							test4.getProgress()*10 + ""};
-					so.update(temp);
+					dc.updateOption(temp);
 				}
 			})
 			.setNegativeButton("No", new DialogInterface.OnClickListener() {

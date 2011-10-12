@@ -2,60 +2,55 @@ package mindcraft.pack;
 
 import java.util.ArrayList;
 
+import mindcraft.database.DatabaseController;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 
 public class Load_Game extends Activity implements OnItemClickListener{
 	
-	
+
 	private static final int PRESSED_A_SAVE=1;
 	static String lastClicked;
 	private ListView singleplayer, multiplayer;
-	private String lv_arr[]={"Android","iPhone","BlackBerry","AndroidPeople"};
 	ArrayList<CharSequence> loadSingleplayer,loadMultiplayer;
+	DatabaseController dc;
+	
 	@Override
 	public void onCreate(Bundle icicle)
 	{
 		super.onCreate(icicle);
 		setContentView(R.layout.loadgame);
-		
+		//dbHelp = new DbHelper(this);
+		dc = DatabaseController.initialize();
+		//rsg = new ReadSaveGame(dbHelp);
 		
 		loadSingleplayer = new ArrayList<CharSequence>();
 		loadMultiplayer = new ArrayList<CharSequence>();
-		loadMultiplayer.add("perp");
-		loadMultiplayer.add("kerp");
-		loadMultiplayer.add("merp");
-		loadMultiplayer.add("perp");
-		loadMultiplayer.add("kerp");
-		loadMultiplayer.add("merp");
-		loadMultiplayer.add("perp");
-		loadMultiplayer.add("kerp");
-		loadMultiplayer.add("merp");
-		loadMultiplayer.add("perp");
-		loadMultiplayer.add("kerp");
-		loadMultiplayer.add("merp");
-		loadSingleplayer.add("derp");
-		loadSingleplayer.add("herp");
-		loadSingleplayer.add("lerp");
-		loadSingleplayer.add("derp");
-		loadSingleplayer.add("herp");
-		loadSingleplayer.add("lerp");
-		loadSingleplayer.add("derp");
-		loadSingleplayer.add("herp");
-		loadSingleplayer.add("lerp");
-		loadSingleplayer.add("derp");
-		loadSingleplayer.add("herp");
-		loadSingleplayer.add("lerp");
+		String[][] saves = dc.readAllSaves();
+		
+		int name = 0;
+		int mode = 3;
+		
+		for(int i = 0; i< saves.length; i++){
+			String saveName = saves[i][name];
+			if(Integer.parseInt(saves[i][mode]) == 1){
+				loadSingleplayer.add(saveName);
+			}
+			else{
+				loadMultiplayer.add(saveName);
+			}
+			
+		}
 		
 		singleplayer	= (ListView)findViewById(R.id.listView_Singleplayer);
 		multiplayer 	= (ListView)findViewById(R.id.listView_Multiplayer);
@@ -78,11 +73,20 @@ public class Load_Game extends Activity implements OnItemClickListener{
 		switch (id) {
 		case PRESSED_A_SAVE:
 			AlertDialog.Builder adb = new AlertDialog.Builder(this)
-			.setMessage("Do you want to load " + getLastClicked() +"?")
+			.setMessage("Do you want to load this save?")
 			.setCancelable(false)
-			.setPositiveButton(lastClicked, new DialogInterface.OnClickListener() {
+			.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int id) {
-					dialog.dismiss(); 
+					String[] save = dc.readSave(lastClicked);
+					
+					Intent intent = new Intent(Load_Game.this, Game_View.class);
+					intent.putExtra("DifficultyName", save[1]);
+					intent.putExtra("Length",Integer.parseInt(save[2]));
+					intent.putExtra("Mode",Integer.parseInt(save[3]));
+			
+					Load_Game.this.startActivity(intent);
+					Load_Game.this.finish(); 
+					
 				}
 			})
 			.setNegativeButton("No", new DialogInterface.OnClickListener() {

@@ -20,7 +20,6 @@ public class About extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		About.this.finish();
-		
 	}
 
 }

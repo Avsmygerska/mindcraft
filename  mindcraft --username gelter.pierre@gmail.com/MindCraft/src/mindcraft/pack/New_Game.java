@@ -3,6 +3,7 @@ package mindcraft.pack;
 import java.util.ArrayList;
 import java.util.List;
 
+import mindcraft.database.DatabaseController;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -26,9 +27,7 @@ public class New_Game extends Activity implements OnClickListener, OnItemSelecte
 	private static final int NOT_SELECTED_MODE = 1;
 	
 	String currentDifficultySelected = "Default";
-	
-	ReadOptions ro;
-	DbHelper help;
+
 	List<CharSequence> difficulty;
 	ArrayAdapter<CharSequence> adapter;
 	
@@ -36,14 +35,16 @@ public class New_Game extends Activity implements OnClickListener, OnItemSelecte
 	Button back;
 	ImageButton start; 
 	Spinner spinner;
+	DatabaseController dc;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.newgame);
 		
-		help = new DbHelper(this);
-		ro = new ReadOptions(help);
+		//help = new DbHelper(this);
+		//ro = new ReadOptions(help);
+		dc = DatabaseController.initialize();
 				
 		singleplayer 	= (CheckBox) this.findViewById(R.id.checkBoxSingleplayer);
 		multiplayer	 	= (CheckBox) this.findViewById(R.id.checkBoxMultiplayer);
@@ -56,13 +57,10 @@ public class New_Game extends Activity implements OnClickListener, OnItemSelecte
 		
 
 		
-		Cursor cursor	= ro.readAll();
-		cursor.moveToFirst();
-		
-		for(int i = 0; i< cursor.getCount(); i++){
-			int pos = cursor.getColumnIndex(DbHelper.C_NAME_OPT);
-			difficulty.add(cursor.getString(pos));
-			cursor.moveToNext();
+		String[] options	= dc.readAllOptions();
+				
+		for(int i = 0; i< options.length; i++){
+			difficulty.add(options[i]);
 		}
 		
 		start.setOnClickListener(this);
@@ -87,7 +85,7 @@ public class New_Game extends Activity implements OnClickListener, OnItemSelecte
 					intent.putExtra("Mode", 1);
 				else
 					intent.putExtra("Mode", 2);
-				
+				intent.putExtra("Length", 5);
         		New_Game.this.startActivity(intent);
         		New_Game.this.finish();
 			}else{
