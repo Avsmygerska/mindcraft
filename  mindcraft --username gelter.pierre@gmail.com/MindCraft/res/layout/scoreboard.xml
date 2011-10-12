@@ -92,5 +92,5 @@
         	     	 android:layout_alignParentRight="true"
         	     	 android:layout_alignParentBottom="true"
         	     	 android:background="@android:color/transparent">
-          </ImageButton>
+          </ImageButton> 
 </RelativeLayout>
