@@ -69,4 +69,22 @@ class StoreSaveGame {
 		}
 		return false;
 	}
+	
+	public boolean deleteAllWithSelectedDifficulty(String name, SQLiteDatabase db){
+		try{
+			//db = helper.getWritableDatabase(); 
+			
+			String [] s = {name};
+			db.delete(DbHelper.TABLE3, DbHelper.C_DIFFICULTY + " =? ", s );
+			System.out.println("\n \n derp:" +  name + ": "+  "\n \n");		
+		}catch(Exception e){
+			return false; 
+		}
+		
+		return true;
+
+
+	}
+	
+	
 }

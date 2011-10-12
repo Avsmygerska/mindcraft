@@ -160,5 +160,14 @@ public class DatabaseController{
 		db.close();
 		return overwrite;
 	}
+	
+	public boolean deleteAllSavesWithSelectedDifficulty(String name){
+		db = dbHelp.getWritableDatabase();
+		boolean delete = ssg.deleteAllWithSelectedDifficulty(name, db);
+		db.close();
+		return delete;
+
+
+	}
 
 }

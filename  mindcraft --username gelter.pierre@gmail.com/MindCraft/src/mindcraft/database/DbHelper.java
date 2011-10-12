@@ -13,14 +13,14 @@ class DbHelper extends SQLiteOpenHelper {
   
   // Highscore variables
   public static final String DB_NAME = "mindcraft.db";
-  public static final int DB_VERSION = 18;
+  public static final int DB_VERSION = 20;
   public static final String TABLE = "Highscore";
   public static final String C_ID = BaseColumns._ID; // Special for id
   public static final String C_NAME = "Name";
   public static final String C_POINTS = "Points";
   
   // Options variables 
-  public static final String TABLE2 = "Options"; 
+  public static final String TABLE2 = "Options";  
   public static final String C_NAME_OPT = "Name"; // 
   public static final String C_WAITTIME = "Waittime"; //5sec - 180 sec
   public static final String C_INCREMENTING_DIFFICULTY = "Incrimenting_Difficulty"; //1-6

@@ -70,6 +70,8 @@ class StoreOptions {
 
 
 	}
+	
+
 	public boolean update(String[]data, SQLiteDatabase db){
 		try{
 			//db = helper.getWritableDatabase();

@@ -280,15 +280,17 @@ public class Options extends Activity implements OnSeekBarChangeListener, OnClic
 			.setCancelable(false)
 			.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int id) {
+					dc.deleteAllSavesWithSelectedDifficulty(adapter.getItem(SPINNER_SELECTED).toString());
 					dc.deleteOption(difficulty.get(SPINNER_SELECTED).toString());
 					adapter.remove(adapter.getItem(SPINNER_SELECTED));
+					
 
 				}
 			})
 			.setNegativeButton("No", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int id) {
 					dialog.cancel();
-				}
+				} 
 			}).create();
 
 		case UPDATE_OPTION:
@@ -304,6 +306,7 @@ public class Options extends Activity implements OnSeekBarChangeListener, OnClic
 							test3.getProgress()*500+500 + "", 
 							test4.getProgress()*10 + ""};
 					dc.updateOption(temp);
+					dc.deleteAllSavesWithSelectedDifficulty(adapter.getItem(SPINNER_SELECTED).toString());
 				}
 			})
 			.setNegativeButton("No", new DialogInterface.OnClickListener() {

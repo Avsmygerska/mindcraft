@@ -20,25 +20,41 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class Game_View extends Activity implements OnClickListener{
 
-	ArrayList<Integer> list = new ArrayList<Integer>();
-	ArrayList<ImageButton> bList = new ArrayList<ImageButton>();
-	ArrayList<ImageButton> allButtons = new ArrayList<ImageButton>();
-	Integer [] imglist = {R.drawable.button1,R.drawable.button2,
-			R.drawable.button3,R.drawable.button4,R.drawable.button5,
-			R.drawable.button6,R.drawable.button7,R.drawable.button8,
-			R.drawable.button9};
+/*
+			This is the class which controls everything 
+				that happens on the game board
+ 																	*/
+
+public class Game_View extends Activity implements OnClickListener{
 	
+
+	// An arraylist which allocates which buttons that have been pressed in the pattern
+	private ArrayList<ImageButton> bList = new ArrayList<ImageButton>();
+	
+	// An arraylist which contains all buttons and helps the AI create a pattern
+	private ArrayList<ImageButton> allButtons = new ArrayList<ImageButton>();
+	
+	// This array contains all the different button-styles (in this case, different color).
+	private Integer [] imglist = {R.drawable.button1,R.drawable.button2,
+				R.drawable.button3,R.drawable.button4,R.drawable.button5,
+				R.drawable.button6,R.drawable.button7,R.drawable.button8,
+				R.drawable.button9};
+	
+	// All the buttons on the game board
 	private ImageButton button1,button2,button3,button4,button5,
 								button6,button7,button8,button9;
 	private Button button10, button11;
+	
+	//A Handler subclass
 	private RefreshShow mRefreshShow = new RefreshShow();
+	
+	// The selected difficulty
 	private String currentDifficulty;
-
 	private TextView countdown, timeToStart;
 	private CountDownTimer tm;
-
+	
+	// Constants that are used with the dialog-windows. 
 	private static final int YOU_LOST = 1; 
 	private static final int WELL_DONE_MULTIPLAYER = 2;
 	private static final int WELL_DONE_SINGLEPLAYER = 3;
@@ -47,6 +63,8 @@ public class Game_View extends Activity implements OnClickListener{
 	private static final int SAVE_GAME = 6;
 	private static final int OVERWRITE = 7; 
 	private static final int DO_YOU_WANT_TO_QUIT = 8;
+	
+	// A lot of extra ints
 	private int state = 1;
 	private int current = 0;
 	private int currentLength;
@@ -56,19 +74,20 @@ public class Game_View extends Activity implements OnClickListener{
 	private Integer maxScore = 1000000;
 	private Integer score;
 	private int showLength = 0;
-	private int mode;
 	private int incrementing;
 	private int completionTime;
 	private int waittime;
 	private int patternTime;
 	private int speedInterval;
+	private int mode;					// Distinguishes if multi-player(2) or single-player(1) mode is selected. 
 	
+	//The link to the database
 	private DatabaseController dc;
-	
-	
-	
 
-
+	
+	
+	
+	//Instantiation of all buttons etc. 
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
@@ -129,180 +148,15 @@ public class Game_View extends Activity implements OnClickListener{
 		timeToStart = (TextView) this.findViewById(R.id.mTextField2);
 		
 		if(mode == 1){
-			disableButtons();
+			disableButtons(); 
 			goAI();
 		}
 	}
-/*
-	@Override
-	public void onClick(View v) {
-		switch(v.getId()){
-		case R.id.Button1:
-			if(state == 1){
-				list.add(1);
-				bList.add(button1);
-			}
-			else{
-				if(list.get(current) == 1)
-					current++;
-				else{
-					tm.cancel();
-					checkHighscore();
-					
-				}
-			}
-			break;
-		case R.id.Button2:
-			if(state == 1){
-				list.add(2);
-				bList.add(button2);
-			}
-			else{
-				if(list.get(current) == 2)
-					current++;
-				else{
-					tm.cancel();
-					checkHighscore();
-					
-				}
-			}
-			break;
-		case R.id.Button3:
-			if(state == 1){
-				list.add(3);
-				bList.add(button3);
-			}
-			else{
-				if(list.get(current) == 3)
-					current++;
-				else{
-					tm.cancel();
-					checkHighscore();
-					
-				}
-			}
-			break;
-		case R.id.Button4:
-			if(state == 1){
-				list.add(4);
-				bList.add(button4);
-			}
-			else{
-				if(list.get(current) == 4)
-					current++;
-				else{
-					tm.cancel();
-					checkHighscore();
-					
-				}
-			}
-			break;
-		case R.id.Button5:
-			if(state == 1){
-				list.add(5);
-				bList.add(button5);
-			}
-			else{
-				if(list.get(current) == 5)
-					current++;
-				else{
-					tm.cancel();
-					checkHighscore();
-					
-				}
-			}
-			break;
-		case R.id.Button6:
-			if(state == 1){
-				list.add(6);
-				bList.add(button6);
-			}
-			else{
-				if(list.get(current) == 6)
-					current++;
-				else{
-					tm.cancel();
-					checkHighscore();
-				}
-			}
-			break;
-		case R.id.Button7:
-			if(state == 1){
-				list.add(7);
-				bList.add(button7);
-			}
-			else{
-				if(list.get(current) == 7)
-					current++;
-				else{
-					tm.cancel();
-					checkHighscore();
-					
-				}
-			}
-			break;
-		case R.id.Button8:
-			if(state == 1){
-				list.add(8);
-				bList.add(button8);
-			}
-			else{
-				if(list.get(current) == 8)
-					current++;
-				else{
-					tm.cancel();
-					checkHighscore();
-					
-				}
-			}
-			break;
-		case R.id.Button9:
-			if(state == 1){
-				list.add(9);
-				bList.add(button9);
-			}
-			else{
-				if(list.get(current) == 9)
-					current++;
-				else{
-					
-					tm.cancel();
-					checkHighscore();
-					
-				}
-			}
-			break;
 
-		case R.id.Button10:
-			
-			showDialog(START);
-			
-			
-
-
-
-		}
-
-		if(state == 1 && list.size() == currentLength){ 
-			disableButtons();
-		}
-		if(state == 2 && current == list.size()){
-			tm.cancel();
-			if(mode == 1)
-				showDialog(WELL_DONE_SINGLEPLAYER);
-			else
-				showDialog(WELL_DONE_MULTIPLAYER);
-
-
-			reset(); 
-
-
-		}
-		System.out.println(current + ", " + list.size() + "..." + currentLength + ", " + state);
-
-	}
-	*/
-	
+	/*
+	 	If a button is pressed, this method will be called. It also checks if
+	 	the player has pressed the correct button in pattern.   				
+	 																			*/ 
 	@Override
 	public void onClick(View v){
 		switch(v.getId()){
@@ -327,10 +181,10 @@ public class Game_View extends Activity implements OnClickListener{
 			}
 			break;
 		}
-		if(state == 1 && list.size() == currentLength){ 
+		if(state == 1 && bList.size() == currentLength){ 
 			disableButtons();
 		}
-		if(state == 2 && current == list.size()){
+		if(state == 2 && current == bList.size()){
 			tm.cancel();
 			if(mode == 1)
 				showDialog(WELL_DONE_SINGLEPLAYER);
@@ -343,12 +197,13 @@ public class Game_View extends Activity implements OnClickListener{
 
 		}
 	}
-	
-	public void disableButtons(){
+	 
+	// A method to disable the buttons which create a pattern and enable the "done"-button
+	public void disableButtons(){ 
 
 		button1.setEnabled(false);
 		button2.setEnabled(false);
-		button3.setEnabled(false);
+		button3.setEnabled(false); 
 		button4.setEnabled(false);
 		button5.setEnabled(false);
 		button6.setEnabled(false);
@@ -360,6 +215,7 @@ public class Game_View extends Activity implements OnClickListener{
 
 
 	}
+	// A method to enable the buttons which create a pattern and disable the "done"-button
 	public void enableButtons(){
 		button1.setEnabled(true);
 		button2.setEnabled(true);
@@ -373,8 +229,9 @@ public class Game_View extends Activity implements OnClickListener{
 		button10.setEnabled(false);
 		button11.setEnabled(false);
 	}
+	
+	// A method which resets all the states which affect the game
 	public void reset(){
-		list = new ArrayList<Integer>();
 		bList = new ArrayList<ImageButton>();
 		state = 1;
 		current = 0;
@@ -385,11 +242,22 @@ public class Game_View extends Activity implements OnClickListener{
 		button11.setVisibility(View.GONE);
 
 	}
-
+	
+	
+	/* Creates dialogs which either asks the user to type in information, if
+	 * they are ready to see the pattern or similar.
+	 * 
+	 * @see android.app.Activity#onCreateDialog(int)
+	 */
+	
 	@Override
 	protected Dialog onCreateDialog(int id) {
 		switch (id) {
 		case YOU_LOST:
+			
+			// If a player has pressed the wrong sequence of the shown pattern, this
+			// dialog will be show. The player can only press a button "ok" from here.
+			
 			return new AlertDialog.Builder(this)
 			.setMessage("YOU LOST")
 			.setCancelable(false)
@@ -404,6 +272,10 @@ public class Game_View extends Activity implements OnClickListener{
 
 
 		case WELL_DONE_MULTIPLAYER:
+			
+			// If a player have completed a pattern in multiplayer mode, this dialog
+			// will be shown. It also increments the sequence of the next pattern
+			
 			return new AlertDialog.Builder(this)
 			.setMessage("WELL DONE \n\n Next players turn")
 			.setCancelable(false)
@@ -416,6 +288,10 @@ public class Game_View extends Activity implements OnClickListener{
 			.create();
 			
 		case WELL_DONE_SINGLEPLAYER:
+			
+			// If a player have completed a pattern in singleplayer mode, this dialog
+			// will be shown. It also increments the sequence of the next pattern
+			
 			return new AlertDialog.Builder(this)
 			.setMessage("WELL DONE! \n Next turn coming up")
 			.setCancelable(false)
@@ -429,6 +305,12 @@ public class Game_View extends Activity implements OnClickListener{
 			.create();	
 
 		case START:
+			
+			// Asks the player if he/she is ready to see the pattern that the opponent have
+			// created. From here, the player can either press yes or press the save button.
+			// However, the pattern which is created will not be saved. Just the length of the pattern
+			// and the difficulty.
+			
 			return new AlertDialog.Builder(this)
 			.setMessage("READY TO START?")
 			.setCancelable(false)
@@ -443,13 +325,19 @@ public class Game_View extends Activity implements OnClickListener{
 			} ).setNegativeButton("No, I want to save", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int id) {
 					dialog.cancel();
-					startSavegame(1);
+					saveGameController(1);
 					
 				}
 			}).create();
 			
 			
 		case HIGHSCORE:
+			
+			// When a game is over and a player has managed to get enough points to earn
+			// a spot on the Highscore, this dialog will be show. Here the player will enter a
+			// name, press "ok"-button and then he or she will be directed to the Highscore table
+			// to bask in the glory of victory! :)
+			
 			LayoutInflater li = LayoutInflater.from(this);
 			View categoryDetailView = li.inflate(R.layout.category_detail, null);
 
@@ -475,6 +363,11 @@ public class Game_View extends Activity implements OnClickListener{
 		
 		 
 	case SAVE_GAME:
+		
+		// If the player has pressed the "save"-button in the START-dialog. This is where he will
+		// be directed. Here he can enter a name for the save and then press save or press cancel and
+		// be redirected back to the START-dialog.
+		
 		LayoutInflater lin = LayoutInflater.from(this);
 		View categoryDetailView2 = lin.inflate(R.layout.category_detail, null);
 
@@ -491,17 +384,22 @@ public class Game_View extends Activity implements OnClickListener{
 				if(dc.storeSave(et.getText().toString() +"," +currentDifficulty + "," +currentLength + "," +mode))
 					Game_View.this.finish();
 				else
-					startSavegame(3);
+					saveGameController(3);
 			}
 		});
 		categoryDetail2.setButton(DialogInterface.BUTTON_NEGATIVE,"Cancel", new DialogInterface.OnClickListener(){
 			public void onClick(DialogInterface dialog, int which) {
-				startSavegame(2);
+				saveGameController(2);
 			}
 		});
 		return categoryDetail2;
 		
 	case OVERWRITE:
+			
+		// If the name that the player have entered in the SAVE_GAME-dialog then this dialog will be
+		// shown that asks if the player wish to overwrite the previous save or return to SAVE_GAME-dialog
+		// to type in a different save name.
+		
 		return new AlertDialog.Builder(this)
 		.setMessage("Save-name exists. Do you want to overwrite?")
 		.setCancelable(false)
@@ -513,18 +411,25 @@ public class Game_View extends Activity implements OnClickListener{
 		})
 		.setNegativeButton("No", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
-				startSavegame(1);
+				saveGameController(1);
 			}
 		})
 		.create();
 		
 	case DO_YOU_WANT_TO_QUIT:
+		
+		// If the player have pressed the 'back'-button, this dialog will be shown. Which asks the player
+		// if he wants to exit the current game. If yes, then he will be directed to the main menu. If no,
+		// the game will continue.
+		
 		return new AlertDialog.Builder(this)
 		.setMessage("Do you wish to quit?")
 		.setCancelable(false)
 		.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
-				tm.cancel();
+				if(tm != null){
+					tm.cancel();
+				}
 				Game_View.this.finish();
 			}
 
@@ -538,11 +443,21 @@ public class Game_View extends Activity implements OnClickListener{
 		break;
 	}
 
-		return null;
+	return null;
 
 	}
 
-
+	/*	
+	 *  This method shows the pattern. It calls the handler to sleep for x seconds (set in options),
+	 *	randomly selects a button-style. if the button-style is not the same as the last one shown
+	 *	it will set the selected style to the current button in the pattern. This is to make it easier
+	 *	for the player to distinguish if a button has been pressed more then once in a rown in the pattern. 
+	 *
+	 *	This method will be called again from the handler until all buttons in the pattern have been shown.
+	 *	When all buttons have been shown, two CountDownTimers will start. One that counts down the 
+	 *	wait-time (set in options) and one for the time the player have to replicate the shown pattern. 
+	 *	
+	 */
 	public void show(){
 		if(showLength != bList.size() ){
 			if(showLength == 0)
@@ -588,16 +503,19 @@ public class Game_View extends Activity implements OnClickListener{
 		}
 	}
 	
+	// A method to create a pattern for singleplayer mode. 
 	public void goAI(){ 
 		Random r = new Random();
 		for(int i = 0; i < currentLength; i++){
 			int next = r.nextInt(8);
 			bList.add(allButtons.get(next));
-			list.add(next+1);
+			
 		}
 		showDialog(START);
 	}
 	
+	// Checks if the score is enough to earn a spot on the Highscore. If so, then the HIGHSCORE-dialog will
+	// be shown. If not, then the YOU_LOST-dialog will be shown.
 	public void checkHighscore(){
 		if(mode == 2){
 			showDialog(YOU_LOST);
@@ -617,7 +535,9 @@ public class Game_View extends Activity implements OnClickListener{
 		}
 	}
 	
-	public void startSavegame(int i){
+	// This method helps to control the flow when a player is moving between dialogs when saving.
+	// Had to implement this due moving between dialogs in onCreateDialog() seemed impossible.
+	public void saveGameController(int i){
 		if(i == 1)
 			showDialog(SAVE_GAME); 
 		else if(i ==2)
@@ -625,19 +545,21 @@ public class Game_View extends Activity implements OnClickListener{
 		else
 			showDialog(OVERWRITE);
 	}	
+	
+	// Creates a random number (0-8) and returns it.
 	private int changeButton() {
 		Random rand = new Random();
 		return (rand.nextInt(8));
 	}
 	
+	// If the player presses the "back"-button on the phone, this method will run and open a
+	// "DO_YOU_WANT_TO_QUIT"-dialog.
 	@Override
 	public void onBackPressed() {
-		
-	    showDialog(DO_YOU_WANT_TO_QUIT);
-	    
+		showDialog(DO_YOU_WANT_TO_QUIT);
 	}
 
-	
+	// Algorithm to calculate the score.
 	private void calculateScore(){ 
 		System.out.println(currentLength + ", " + waittime);
 		score = maxScore/(100/currentLength)/(1000/(waittime/1000));
@@ -645,9 +567,11 @@ public class Game_View extends Activity implements OnClickListener{
 	}
 
 
-
+	// Subclass which handles the updates of button-styles.
 	private class RefreshShow extends Handler {
-
+		
+		// Sets the button back to "normal"-style and calls the show method to change the next button
+		// in the pattern.
 		@Override
 		public void handleMessage(Message m){
 			bList.get(showLength).setImageResource(normalbutton);
@@ -656,7 +580,7 @@ public class Game_View extends Activity implements OnClickListener{
 
 		}
 
-
+		// Removes the first message in the chain and makes the handler sleep for a while (set in options).
 		public void sleep(long delayMillis) {  
 		    this.removeMessages(0);  
 		    sendMessageDelayed(obtainMessage(0), delayMillis);  
