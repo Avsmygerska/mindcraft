@@ -15,7 +15,10 @@ class StoreOptions {
 
 
 	}
-
+	/*
+	Method store opens the database from a writable perspective, and saves the current state
+	of the option into the options database.
+ */
 	public boolean store(String[]data, SQLiteDatabase db){
 
 		//db = helper.getWritableDatabase();
@@ -54,7 +57,10 @@ class StoreOptions {
 		}
 		return false;
 	}
-
+	/*
+	Method store opens the database from a writable perspective, and deletes the current option
+	from the options database.
+ */
 	public boolean delete(String name, SQLiteDatabase db){
 		try{
 			//db = helper.getWritableDatabase(); 
@@ -71,7 +77,10 @@ class StoreOptions {
 
 	}
 	
-
+	/*
+	Method store opens the database from a writable perspective, and edits the current option
+	in the options database.
+ */
 	public boolean update(String[]data, SQLiteDatabase db){
 		try{
 			//db = helper.getWritableDatabase();

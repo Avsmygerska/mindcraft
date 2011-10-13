@@ -7,7 +7,11 @@
   	android:background="@drawable/background"
   	android:layout_weight="2">
   	 
+  	 <!-- Two linearLayouts are defined here, one for saved
+  	 single player games and one for multiplayer games.
+  	 Inside are the names of the saved files. -->
   	 
+  	 <!-- The left(single) LinearLayout -->
  	<LinearLayout 	android:orientation="vertical"
  					android:layout_weight="1" 
                     android:layout_height="fill_parent" 
@@ -48,7 +52,7 @@
 	
 	
 	
-	
+	<!-- The right(multi) LinearLayout -->
 	<LinearLayout 	android:orientation="vertical"
 					android:layout_weight="1" 
                 	android:layout_height="fill_parent" 

@@ -13,7 +13,10 @@ class StoreHighScore {
 		//this.helper = helper;
 		
 	}
-
+	/*
+	Method storeHighscore opens the database from a writable perspective, and writes down all
+	the highscores into the database.
+ */
 	public boolean storeHighscore(String text, SQLiteDatabase db){
 
 		// Perform action on key press

@@ -13,7 +13,10 @@ class StoreSaveGame {
 	public StoreSaveGame(){
 			
 	}
-
+	/*
+	Method store opens the database from a writable perspective, and saves the current state
+	of the game into the saved games database.
+ */
 	public boolean store(String text, SQLiteDatabase db){
 
 		String [] data = text.split(",");
@@ -48,7 +51,10 @@ class StoreSaveGame {
 		db.close();
 		return false;
 	}
-	
+	/*
+	Method overWrite opens the database from a writable perspective, and saves the current state
+	of the game into the saved games database, overwriting the old one.
+ */
 	public boolean overWrite(SQLiteDatabase db){
 		String [] data = holder.split(",");
 		ContentValues values1 = new ContentValues();
@@ -69,7 +75,10 @@ class StoreSaveGame {
 		}
 		return false;
 	}
-	
+	/*
+	Method opens the database from a writable perspective, and deletes all the saved games
+	matching the criteria of given difficulty.
+ */
 	public boolean deleteAllWithSelectedDifficulty(String name, SQLiteDatabase db){
 		try{
 			//db = helper.getWritableDatabase(); 

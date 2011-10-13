@@ -5,6 +5,11 @@
   				android:layout_height="fill_parent"
   				android:background="@drawable/background"
   				android:id="@+id/newGameLayout">
+  				
+<!-- The scoreboard shows the 5 best players by score. On the left is their name
+from first to fifth. On the right is their score in the same order. -->
+
+			<!-- Scoreboard logo -->
    		  <ImageView android:layout_width="wrap_content"
         	     	 android:id="@+id/ScoreboardView" 
         	     	 android:layout_height="wrap_content" 
@@ -12,6 +17,8 @@
         	     	 android:layout_marginTop="10dip" 
         	     	 android:layout_centerHorizontal="true">
           </ImageView>
+          
+          <!-- 1st players name -->
    		  <TextView android:text="TextView"
    		  			android:layout_width="wrap_content" 
    		  			android:layout_height="wrap_content" 
@@ -20,6 +27,8 @@
    		  			android:layout_marginTop="10dip" 
    		  			android:layout_alignLeft="@+id/ScoreboardView">
    		  </TextView>
+   		  
+   		  <!-- 1st players score -->
    		  <TextView android:text="TextView" 
    		  			android:layout_width="wrap_content" 
    		  			android:layout_height="wrap_content" 
@@ -28,6 +37,8 @@
    		  			android:layout_marginTop="10dip" 
    		  			android:layout_alignRight="@+id/ScoreboardView">
    		  </TextView>
+   		  
+   		  <!-- 2nd players name -->
    		  <TextView android:text="TextView" 
    		  			android:layout_width="wrap_content" 
    		  			android:layout_height="wrap_content" 
@@ -35,6 +46,8 @@
    		  			android:layout_below="@+id/firstName" 
    		  			android:layout_alignLeft="@+id/ScoreboardView">
    		  </TextView>
+   		  
+   		  <!-- 2nd players score -->
    		  <TextView android:text="TextView" 
    		  			android:layout_width="wrap_content" 
    		  			android:layout_height="wrap_content" 
@@ -42,6 +55,8 @@
    		  			android:layout_below="@+id/firstName" 
    		  			android:layout_alignRight="@+id/ScoreboardView">
    		  </TextView>
+   		  
+   		  <!-- 3rd players name -->
    		  <TextView android:text="TextView" 
    		  			android:layout_width="wrap_content" 
    		  			android:layout_height="wrap_content" 
@@ -49,6 +64,8 @@
    		  			android:layout_below="@+id/secondName" 
    		  			android:layout_alignLeft="@+id/ScoreboardView">
    		  </TextView>
+   		  
+   		  <!-- 3rd players score -->
    		  <TextView android:text="TextView" 
    		  			android:layout_width="wrap_content" 
    		  			android:layout_height="wrap_content" 
@@ -56,6 +73,8 @@
    		  			android:layout_below="@+id/secondName" 
    		  			android:layout_alignRight="@+id/ScoreboardView">
    		  </TextView>
+   		  
+   		  <!-- 4th players name -->
    		  <TextView android:text="TextView" 
    		  			android:layout_width="wrap_content" 
    		  			android:layout_height="wrap_content" 
@@ -63,6 +82,8 @@
    		  			android:layout_below="@+id/thirdName" 
    		  			android:layout_alignLeft="@+id/ScoreboardView">
    		  </TextView>
+   		  
+   		  <!-- 4th players score -->
    		  <TextView android:text="TextView" 
    		  			android:layout_width="wrap_content" 
    		  			android:layout_height="wrap_content" 
@@ -70,6 +91,8 @@
    		  			android:layout_below="@+id/thirdName" 
    		  			android:layout_alignRight="@+id/ScoreboardView">
    		  </TextView>
+   		  
+   		  <!-- 5th players name -->
    		  <TextView android:text="TextView" 
    		  			android:layout_width="wrap_content" 
    		  			android:layout_height="wrap_content" 
@@ -77,6 +100,8 @@
    		  			android:layout_below="@+id/fourthName" 
    		  			android:layout_alignLeft="@+id/ScoreboardView">
    		  </TextView>
+   		  
+   		  <!-- 5th players score -->
    		  <TextView android:text="TextView" 
    		  			android:layout_width="wrap_content" 
    		  			android:layout_height="wrap_content" 
@@ -84,6 +109,8 @@
    		  			android:layout_below="@+id/fourthName" 
    		  			android:layout_alignRight="@+id/ScoreboardView">
    		  </TextView>
+   		  
+   		  
    		  <ImageButton android:layout_width="wrap_content"
         	     	 android:id="@+id/returnToMainButton" 
         	     	 android:layout_height="wrap_content" 

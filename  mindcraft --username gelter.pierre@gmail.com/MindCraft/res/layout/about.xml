@@ -5,6 +5,8 @@
   				android:layout_height="fill_parent"
   				android:background="@drawable/background"
   				android:id="@+id/aboutLayout">
+  				
+  				<!-- This is where version information and creator names are shown. -->
     		<TextView android:id="@+id/aboutText" 
     				  android:layout_height="wrap_content" 
     				  android:layout_width="wrap_content" 
@@ -15,6 +17,8 @@
     				  android:maxLines="6"
     				  android:text="MindCraft v0.1 \n\nCreated by: \nChristian Bergström \nTobias Malm \nPierre Gelter">
     		</TextView>
+    		
+    		
     		<ImageButton android:layout_width="wrap_content"
         	     	 android:id="@+id/aboutBackButton" 
         	     	 android:layout_height="wrap_content" 

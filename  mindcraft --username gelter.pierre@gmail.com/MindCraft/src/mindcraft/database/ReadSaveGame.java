@@ -10,9 +10,11 @@ class ReadSaveGame {
 	public ReadSaveGame(){
 		//this.helper = helper;
 	}
-	
+	/*
+	Method readAllSaves opens the database from a readable perspective, creates a cursor and fill 
+	it with all the saves data.
+	*/
 	public Cursor readAllSaves(SQLiteDatabase db){
-		//db = helper.getReadableDatabase();
 		String sql = "SELECT * FROM "+DbHelper.TABLE3 +";";
 		try{
 			Cursor cursor = db.rawQuery(sql, new String []{});
@@ -26,8 +28,8 @@ class ReadSaveGame {
 	}
 	
 	 /*
-		Method readOption opens the database from a readable perspective, creates a cursor and fill 
-		it with the data matching the name of the option
+		Method readSave opens the database from a readable perspective, creates a cursor and fill 
+		it with the data matching the name of the save
 	 */
 	public Cursor readSave(String saveName, SQLiteDatabase db){
 		//db = helper.getReadableDatabase();

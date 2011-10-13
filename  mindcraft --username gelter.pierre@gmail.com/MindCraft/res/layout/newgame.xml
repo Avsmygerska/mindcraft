@@ -4,6 +4,10 @@
   				android:layout_height="fill_parent"
   				android:background="@drawable/background"
   				android:id="@+id/newGameLayout">
+  				
+  <!-- The menu items for the New game menu is defined here. -->
+  
+  		<!-- New game logo -->
   		<ImageView 	android:layout_width="wrap_content"
         	   	 	android:id="@+id/newGameView" 
         	     	android:layout_height="wrap_content" 
@@ -11,6 +15,10 @@
         	     	android:layout_marginTop="10dip" 
         	     	android:layout_centerHorizontal="true">
         </ImageView>
+        
+        <!-- Anchor is an invisible view that helps with placing the rest 
+        of the items. Every item below(except start button) should be dependent
+        directly or indirectly of anchor. -->
         <ImageView	android:layout_width="wrap_content"
         	     	android:id="@+id/anchor" 
         	     	android:layout_height="wrap_content" 
@@ -20,6 +28,7 @@
         	     	android:layout_centerHorizontal="true">
           </ImageView>
           
+          <!-- The single player checkbox -->
           <CheckBox android:id="@+id/checkBoxSingleplayer" 
           			android:layout_width="wrap_content" 
           			android:layout_height="wrap_content" 
@@ -28,6 +37,8 @@
           			android:layout_toLeftOf="@+id/anchor" 
           			android:layout_marginRight="5dp">
           </CheckBox>
+          
+          <!-- The multiplayer checkbox -->
           <CheckBox android:id="@+id/checkBoxMultiplayer" 
           			android:layout_width="wrap_content" 
           			android:layout_height="wrap_content" 
@@ -120,6 +131,8 @@
         	     	 android:layout_marginTop="10dip"
         	     	 android:background="@android:color/transparent">
           </ImageButton> -->
+          
+          <!-- The Start button -->
   		  <ImageButton android:layout_width="wrap_content"
         	     	 android:id="@+id/startButton" 
         	     	 android:layout_height="wrap_content" 
@@ -130,6 +143,8 @@
         	     	 android:layout_marginTop="100dp"
         	     	 android:background="@android:color/transparent">
           </ImageButton>
+          
+          <!-- Legend for the difficulty spinner. -->
           <TextView android:layout_width="wrap_content" 
           			android:layout_height="wrap_content" 
           			android:id="@+id/textView1" 
@@ -138,6 +153,8 @@
           			android:layout_centerHorizontal="true" 
           			android:layout_marginTop="30dp">
           </TextView>
+          
+          <!-- The difficulty spinner -->
           <Spinner 	android:layout_width="wrap_content" 
           			android:id="@+id/spinner1" 
           			android:layout_height="wrap_content" 
@@ -145,6 +162,8 @@
           			android:layout_centerHorizontal="true"
           			android:layout_marginTop="10dp">
           	</Spinner>
+          	
+          <!-- Backbutton - will be removed -->
           <Button 	android:layout_width="wrap_content" 
           			android:id="@+id/backButton" 
           			android:layout_height="wrap_content" 

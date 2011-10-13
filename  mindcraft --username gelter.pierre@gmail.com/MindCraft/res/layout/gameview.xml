@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--  <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:orientation="vertical"
@@ -9,139 +8,15 @@
   android:background="@drawable/background"
   android:id="@+id/GameViewLayout">
   
-  <TextView 	android:layout_height="wrap_content" 
-  				android:text="" 
-  				android:layout_width="wrap_content" 
-  				android:id="@+id/mTextField" 
-  				android:layout_alignParentTop="true"
-  				android:textSize="50sp"
-  				android:textStyle="bold" 
-  				android:textColor="#FF0000"
-  				android:layout_centerInParent="true"
-  				android:layout_marginTop="32dp"></TextView>
-  				
-  <TextView 	android:layout_height="wrap_content" 
-  				android:text="" 
-  				android:layout_width="wrap_content" 
-  				android:id="@+id/mTextField2" 
-  				android:layout_alignParentTop="true"
-  				android:textSize="30sp"
-  				android:textStyle="bold" 
-  				android:textColor="#FF0000"
-  				android:layout_centerInParent="true"
-  				android:layout_marginTop="32dp">
-  </TextView>
+ <!--  Show which players turn it is in multiplayer, show nothing in singleplayer(maybe just player1?). -->
+  		  <ImageView android:layout_width="wrap_content"
+        	     	 android:id="@+id/banner" 
+        	     	 android:layout_height="wrap_content" 
+        	     	 android:src="@drawable/anchor"
+        	     	 android:layout_marginTop="-10sp">
+          </ImageView>
   
-  
-  
-  <ImageButton 	 android:layout_width="wrap_content"
-        	     	 android:id="@+id/Button1" 
-        	     	 android:layout_height="wrap_content" 
-        	     	 android:src="@drawable/buttonselector"
-        	     	 android:layout_toLeftOf="@+id/Button2"
-        	     	 android:layout_alignTop="@+id/Button2"
-        	     	 android:layout_marginRight="10sp"
-        	     	 android:background="@android:color/transparent">
-          </ImageButton>
-          <ImageButton 	 android:layout_width="wrap_content"
-        	     	 android:id="@+id/Button2" 
-        	     	 android:layout_height="wrap_content" 
-        	     	 android:src="@drawable/buttonselector"
-        	     	 android:layout_above="@+id/Button5"
-        	     	 android:layout_centerHorizontal="true"
-        	     	 android:layout_marginBottom="10sp"
-        	     	 android:background="@android:color/transparent">
-          </ImageButton>
-          <ImageButton 	 android:layout_width="wrap_content"
-        	     	 android:id="@+id/Button3" 
-        	     	 android:layout_height="wrap_content" 
-        	     	 android:src="@drawable/buttonselector"
-        	     	 android:layout_toRightOf="@+id/Button2"
-        	     	 android:layout_alignTop="@+id/Button2"
-        	     	 android:layout_marginLeft="10sp"
-        	     	 android:background="@android:color/transparent">
-          </ImageButton>
-          <ImageButton 	 android:layout_width="wrap_content"
-        	     	 android:id="@+id/Button4" 
-        	     	 android:layout_height="wrap_content" 
-        	     	 android:src="@drawable/buttonselector"
-        	     	 android:layout_alignTop="@+id/Button5"
-        	     	 android:layout_toLeftOf="@+id/Button5"
-        	     	 android:layout_marginRight="10sp"
-        	     	 android:background="@android:color/transparent">
-          </ImageButton>
-    <ImageButton 	 android:layout_width="wrap_content"
-        	     	 android:id="@+id/Button5" 
-        	     	 android:layout_height="wrap_content" 
-        	     	 android:src="@drawable/buttonselector"
-        	     	 android:layout_centerInParent="true"
-        	     	 android:background="@android:color/transparent">
-          </ImageButton>
-          <ImageButton 	 android:layout_width="wrap_content"
-        	     	 android:id="@+id/Button6" 
-        	     	 android:layout_height="wrap_content" 
-        	     	 android:src="@drawable/buttonselector"
-        	     	 android:layout_alignTop="@+id/Button5"
-        	     	 android:layout_toRightOf="@+id/Button5"
-        	     	 android:layout_marginLeft="10sp"
-        	     	 android:background="@android:color/transparent">
-          </ImageButton>
-          <ImageButton 	 android:layout_width="wrap_content"
-        	     	 android:id="@+id/Button7" 
-        	     	 android:layout_height="wrap_content" 
-        	     	 android:src="@drawable/buttonselector"
-        	     	 android:layout_toLeftOf="@+id/Button8"
-        	     	 android:layout_alignTop="@+id/Button8"
-        	     	 android:layout_marginRight="10sp"
-        	     	 android:background="@android:color/transparent">
-          </ImageButton>
-          <ImageButton 	 android:layout_width="wrap_content"
-        	     	 android:id="@+id/Button8" 
-        	     	 android:layout_height="wrap_content" 
-        	     	 android:src="@drawable/buttonselector"
-        	     	 android:layout_below="@+id/Button5"
-        	     	 android:layout_centerHorizontal="true"
-        	     	 android:layout_marginTop="10sp"
-        	     	 android:background="@android:color/transparent">
-          </ImageButton>
-          <ImageButton 	 android:layout_width="wrap_content"
-        	     	 android:id="@+id/Button9" 
-        	     	 android:layout_height="wrap_content" 
-        	     	 android:src="@drawable/buttonselector"
-        	     	 android:layout_toRightOf="@+id/Button8"
-        	     	 android:layout_alignTop="@+id/Button8"
-        	     	 android:layout_marginLeft="10sp"
-        	     	 android:background="@android:color/transparent">
-          </ImageButton>
-          <Button 	android:text="Done" 
-          			android:layout_height="wrap_content" 
-          			android:layout_width="wrap_content" 
-          			android:id="@+id/Button10"
-          			android:layout_below="@+id/Button8" 
-          			android:layout_centerHorizontal="true" 
-          			android:layout_marginTop="20sp"
-          			>
-          </Button>
-          <Button 	android:text="Start" 
-          			android:layout_height="wrap_content" 
-          			android:layout_width="wrap_content" 
-          			android:id="@+id/Button11" 
-          			android:layout_below="@+id/Button8" 
-          			android:layout_centerHorizontal="true" 
-          			android:layout_marginTop="20sp"
-          			>
-          </Button>
-          
-</RelativeLayout> -->
-
-<RelativeLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:orientation="vertical"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
-  android:background="@drawable/background"
-  android:id="@+id/GameViewLayout">
-  
+ <!--  Timer and countdown are shown here, above the gameboard. -->
   <TextView 	android:layout_height="wrap_content" 
   				android:text="" 
   				android:layout_width="wrap_content" 
@@ -165,7 +40,11 @@
   				android:layout_marginTop="32dp"></TextView>
   
   
-  
+<!--   The gameboard are painted here. The ImageButton Button5 controls the position
+  of the gameboard. Change its position, and the rest will follow. The  build is as 
+  follows: The edges(1,3,7,9) depends on the cross(2,4,6,8) which depends on the
+  center(5). To change the distance between the buttons, change the margin(one for 
+  each button, all should be the same). -->
   <ImageButton 	 android:layout_width="wrap_content" 
         	     	 android:id="@+id/Button1" 
         	     	 android:layout_height="wrap_content" 
@@ -245,6 +124,9 @@
         	     	 android:layout_marginLeft="5sp"
         	     	 android:background="@android:color/transparent">
           </ImageButton>
+          
+ <!-- This is the button below the gameboard. It is used when a pattern is 
+ finished in multiplayer to confirm and start the other players turn. -->      
           <Button 	android:text="Done" 
           			android:layout_height="wrap_content" 
           			android:layout_width="wrap_content" 
@@ -254,6 +136,8 @@
           			android:layout_marginTop="20sp"
           			>
           </Button>
+          
+ <!-- This button does nothing..? -->
           <Button 	android:text="Start" 
           			android:layout_height="wrap_content" 
           			android:layout_width="wrap_content" 

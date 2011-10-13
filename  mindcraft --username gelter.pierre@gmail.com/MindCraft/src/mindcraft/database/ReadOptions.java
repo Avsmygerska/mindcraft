@@ -5,13 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 class ReadOptions {
 	
-
-	//private DbHelper helper;
-	//private SQLiteDatabase db;
-
 	public ReadOptions(){
-		//this.helper = helper;
-		
+		//this.helper = helper;	
 	}
 
 	/*

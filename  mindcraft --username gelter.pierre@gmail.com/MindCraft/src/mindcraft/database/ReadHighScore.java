@@ -16,7 +16,10 @@ class ReadHighScore {
 		//this.db 	= db;
 	}
 	
-	
+	/*
+	Method read opens the database from a readable perspective, creates a cursor and fill 
+	it with the first 5 rows of data in the highscore database, sorted by the highest score.
+ */
 	public Cursor read(SQLiteDatabase db){
 		
 		//System.out.println(helper);

@@ -74,6 +74,7 @@ class DbHelper extends SQLiteOpenHelper {
 	  
   }
   
+  //Places an initial field in the highscore database.
   public boolean testHighscoreStart(SQLiteDatabase db){
 	  ContentValues values = new ContentValues();
 	  values.put(DbHelper.C_NAME, "Christian");
@@ -83,6 +84,7 @@ class DbHelper extends SQLiteOpenHelper {
 	  return true;
   }
   
+  //Creates the Default option in the options database.
   public boolean testOptionsStart(SQLiteDatabase db){
 	  ContentValues values = new ContentValues();
 	  values.put(DbHelper.C_NAME_OPT, "Default");
@@ -97,6 +99,7 @@ class DbHelper extends SQLiteOpenHelper {
   }
 
   @Override
+  //In the case of an update in the game version, all information in the database is flushed.
   public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     // Typically you do ALTER TABLE... here
     db.execSQL("drop table if exists " + TABLE);

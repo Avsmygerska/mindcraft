@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class DatabaseController{
 	
+	
 	private static DatabaseController dc = null;
 	private DbHelper dbHelp;
 	private SQLiteDatabase db;
@@ -18,7 +19,7 @@ public class DatabaseController{
 	private StoreSaveGame ssg;
 	
 	
-	
+	//Creates instances of all the other classes in this packet.
 	private DatabaseController(Context context){
 		this.dbHelp = new DbHelper(context);
 		rhs = new ReadHighScore();
@@ -29,6 +30,7 @@ public class DatabaseController{
 		ssg = new StoreSaveGame();
 	}
 	
+	//Starts a new instance of DatabaseController if no earlier instance exists.
 	public static DatabaseController initialize(Context context){
 		if(dc == null){
 			dc = new DatabaseController(context);
@@ -42,7 +44,7 @@ public class DatabaseController{
 		return dc;
 	}
 	
-	
+	//Fetches all the highscores, and returns the result in a String matrix.
 	public String[][] readHighscore(){
 		db = dbHelp.getReadableDatabase();
 		Cursor cursor = rhs.read(db);
@@ -58,6 +60,7 @@ public class DatabaseController{
 		return highscore;
 	}
 	
+	//Fetches an optionn, and returns the result in a String field.
 	public String[] readOption(String text){
 		db = dbHelp.getReadableDatabase();
 		Cursor cursor = ro.readOption(text, db);
@@ -71,6 +74,7 @@ public class DatabaseController{
 		return option;
 	}
 	
+	//Fetches all the options, and returns the result in a String field.
 	public String[] readAllOptions(){
 		db = dbHelp.getReadableDatabase();
 		Cursor cursor = ro.readAllOptions(db);
@@ -86,7 +90,7 @@ public class DatabaseController{
 		db.close();
 		return options;
 	}
-	
+	//Fetches a save, and returns the result in a String field.
 	public String[] readSave(String name){
 		db = dbHelp.getReadableDatabase();
 		Cursor cursor = rsg.readSave(name, db);
@@ -99,7 +103,7 @@ public class DatabaseController{
 		db.close();
 		return save;
 	}
-	
+	//Fetches all the saves, and returns the result in a String matrix.
 	public String[][] readAllSaves(){
 		db = dbHelp.getReadableDatabase();
 		Cursor cursor = rsg.readAllSaves(db);
@@ -120,14 +124,14 @@ public class DatabaseController{
 		db.close();
 		return saves;
 	}
-	
+	//Stores all the highscores in the database.
 	public boolean storeHighscore(String text){
 		db = dbHelp.getWritableDatabase();
 		boolean store = shs.storeHighscore(text, db);
 		db.close();
 		return store;
 	}
-	
+	//Stores an option in the database.
 	public boolean storeOption(String[] data){
 		db = dbHelp.getWritableDatabase();
 		boolean store = so.store(data, db);
@@ -135,32 +139,35 @@ public class DatabaseController{
 		return store;
 		
 	}
+	//Deletes an option in the database.
 	public boolean deleteOption(String name){
 		db = dbHelp.getWritableDatabase();
 		boolean delete = so.delete(name, db);
 		db.close();
 		return delete;
 	}
-	
+	//Updates an option in the database.
 	public boolean updateOption(String[] data){
 		db = dbHelp.getWritableDatabase();
 		boolean update = so.update(data, db);
 		db.close();
 		return update;
 	}
+	//Stores a save in the database.
 	public boolean storeSave(String text){
 		db = dbHelp.getWritableDatabase();
 		boolean store = ssg.store(text, db);
 		db.close();
 		return store;
 	}
+	//Overwrites a save in the database.
 	public boolean overwriteSave(){
 		db = dbHelp.getWritableDatabase();
 		boolean overwrite = ssg.overWrite(db);
 		db.close();
 		return overwrite;
 	}
-	
+	//Deletes saves in the database matching a specified Difficulty.
 	public boolean deleteAllSavesWithSelectedDifficulty(String name){
 		db = dbHelp.getWritableDatabase();
 		boolean delete = ssg.deleteAllWithSelectedDifficulty(name, db);
